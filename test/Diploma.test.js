@@ -13,7 +13,6 @@ contract("Diploma", (accounts) => {
     describe("deployment", async() => {
         it("deploys successfully", async() =>{
             const address = contract.address
-            console.log(address)
             assert.notEqual(address, 0x0)
             assert.notEqual(address, '')
             assert.notEqual(address, null)
@@ -58,6 +57,17 @@ contract("Diploma", (accounts) => {
             assert.equal(event.to, accounts[1], 'to is correct')
             const diplomaLinks = await contract.getDiplomaLinks()
             assert.deepEqual(diplomaLinks, ["abc", "abcd"], "diplomaLinks are correct")
+        })
+
+        it('transfers first token', async () =>{//Transfer Prohibition Test
+            let owner1 = await contract.ownerOf(1);
+            let owner2 = await contract.ownerOf(2);
+            assert.equal(owner1, accounts[0])
+            assert.equal(owner2, accounts[1])
+            await contract.transferFrom(accounts[0], accounts[2], 1).should.be.rejected;
+            owner1 = await contract.ownerOf(1);
+            assert.equal(owner1, accounts[0])
+            assert.notEqual(owner1, accounts[2])
         })
     })
 

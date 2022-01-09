@@ -31,5 +31,30 @@ contract Diploma is ERC721, Ownable{
     function getDiplomaLinks() public view returns(string[] memory diplomaLinks){
         return _diplomaLinks;
     }
+    function transferFrom(//Only callable when minted
+        address from,
+        address to,
+        uint256 tokenId
+    ) public virtual override {
+        require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
+        super.transferFrom(from,to,tokenId);
+    }
+    function safeTransferFrom(//Only callable when minted
+        address from,
+        address to,
+        uint256 tokenId
+    ) public virtual override {
+        require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
+        super.safeTransferFrom(from,to,tokenId);
+    }
+    function safeTransferFrom(//Only callable when minted
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes memory _data
+    ) public virtual override {
+        require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
+        super.safeTransferFrom(from, to, tokenId, _data);
+    }
 
 }
