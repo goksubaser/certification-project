@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Solidity Contract" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="23OO4RDI2cFSejqiCGovqm5vSv8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\Dersler\CMPE492\GitHub\certification_project\contracts" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="" />
+      <created>1641601478464</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641601478464</updated>
+      <workItem from="1641601480135" duration="61000" />
+      <workItem from="1641602003552" duration="1327000" />
+      <workItem from="1641692630884" duration="28372000" />
+      <workItem from="1641761285325" duration="145000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$" />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1641746649036" />
+    <state x="930" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1641694005761">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="930" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1641694005761" />
+    <state x="304" y="71" key="DiffContextDialog" timestamp="1641602703908">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="304" y="71" key="DiffContextDialog/0.0.1600.860@0.0.1600.860" timestamp="1641602703908" />
+    <state x="653" y="328" key="Github.ShareDialog" timestamp="1641756479618">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="653" y="328" key="Github.ShareDialog/0.0.1600.860@0.0.1600.860" timestamp="1641756479618" />
+    <state width="754" height="156" key="GridCell.Tab.0.bottom" timestamp="1641603362214">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="754" height="156" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1641603362214" />
+    <state width="754" height="156" key="GridCell.Tab.0.center" timestamp="1641603362214">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="754" height="156" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1641603362214" />
+    <state width="754" height="156" key="GridCell.Tab.0.left" timestamp="1641603362214">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="754" height="156" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1641603362214" />
+    <state width="754" height="156" key="GridCell.Tab.0.right" timestamp="1641603362214">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="754" height="156" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1641603362214" />
+    <state x="301" y="75" key="SettingsEditor" timestamp="1641761312598">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="301" y="75" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1641761312598" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1641755838547">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1641755838547" />
+    <state x="784" y="166" key="Vcs.Push.Dialog.v2" timestamp="1641756377220">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="784" y="166" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1641756377220" />
+    <state x="507" y="164" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1641761344445">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="507" y="164" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1600.860@0.0.1600.860" timestamp="1641761344445" />
+  </component>
+</project>

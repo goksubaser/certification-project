@@ -1,0 +1,20 @@
+{
+  "name": "erc721-certification",
+  "version": "0.0.0",
+  "description": "An Bloxberg Network Application",
+  "author": "goksubaser@gmail.com",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.1",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^8.6.0",
+    "truffle": "^5.1.32",
+    "truffle-flattener": "^1.5.0",
+    "web3": "^1.6.1"
+  }
+}
