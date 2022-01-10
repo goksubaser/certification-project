@@ -19,13 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="New github repo created">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting.">
+      <change afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Course.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Course.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Course.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Course.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Diploma.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Diploma.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,7 @@
       <workItem from="1641602003552" duration="1327000" />
       <workItem from="1641692630884" duration="28372000" />
       <workItem from="1641761285325" duration="145000" />
-      <workItem from="1641761446435" duration="8340000" />
+      <workItem from="1641761446435" duration="14709000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -110,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641761544836</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting.">
+      <created>1641772393905</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641772393905</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +139,8 @@
       <path value="$USER_HOME$" />
     </ignored-roots>
     <MESSAGE value="New github repo created" />
-    <option name="LAST_COMMIT_MESSAGE" value="New github repo created" />
+    <MESSAGE value="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting." />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">

@@ -2,8 +2,9 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./Roles.sol";
 
-contract Course is ERC721, Ownable{
+contract Course is ERC721, Roles{
 
     //Mapping of the instructor to the tokenIDs
     mapping(address => uint256[]) _givesCourses;
@@ -36,5 +37,35 @@ contract Course is ERC721, Ownable{
     }
     function getGivesCourses(address instructorAddress) public view returns (uint[] memory givesCourses){
         return _givesCourses[instructorAddress];
+    }
+
+    //TODO Contract Owner can make mistakes when minting. Token should be somewhat editable for contract owner
+    function transferFrom(//Only callable when minted
+        address from,
+        address to,
+        uint256 tokenId
+    ) public virtual override {
+        require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
+        super.transferFrom(from,to,tokenId);
+    }
+    function safeTransferFrom(//Only callable when minted
+        address from,
+        address to,
+        uint256 tokenId
+    ) public virtual override {
+        require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
+        super.safeTransferFrom(from,to,tokenId);
+    }
+    function safeTransferFrom(//Only callable when minted
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes memory _data
+    ) public virtual override {
+        require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
+        super.safeTransferFrom(from, to, tokenId, _data);
+    }
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControl) returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 }

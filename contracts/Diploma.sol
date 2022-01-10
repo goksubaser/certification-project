@@ -2,8 +2,9 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./Roles.sol";
 
-contract Diploma is ERC721, Ownable{
+contract Diploma is ERC721, Roles{
 
     //Mapping owner to the tokenID
     mapping(address => uint256) _hasCertificate;
@@ -31,6 +32,8 @@ contract Diploma is ERC721, Ownable{
     function getDiplomaLinks() public view returns(string[] memory diplomaLinks){
         return _diplomaLinks;
     }
+
+    //TODO Contract Owner can make mistakes when minting. Token should be somewhat editable for contract owner
     function transferFrom(//Only callable when minted
         address from,
         address to,
@@ -55,6 +58,9 @@ contract Diploma is ERC721, Ownable{
     ) public virtual override {
         require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
         super.safeTransferFrom(from, to, tokenId, _data);
+    }
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControl) returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 
 }
