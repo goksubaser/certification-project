@@ -19,12 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting.">
-      <change afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/Course.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Course.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +97,7 @@
       <workItem from="1641602003552" duration="1327000" />
       <workItem from="1641692630884" duration="28372000" />
       <workItem from="1641761285325" duration="145000" />
-      <workItem from="1641761446435" duration="14709000" />
+      <workItem from="1641761446435" duration="15724000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -116,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641772393905</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now">
+      <created>1641831840779</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641831840779</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +144,8 @@
     </ignored-roots>
     <MESSAGE value="New github repo created" />
     <MESSAGE value="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting." />
+    <MESSAGE value="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
