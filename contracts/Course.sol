@@ -1,7 +1,6 @@
 pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Roles.sol";
 
 contract Course is ERC721, Roles{
@@ -10,10 +9,14 @@ contract Course is ERC721, Roles{
     mapping(address => uint256[]) _givesCourses;
     //Mapping of the tokenID to the owner is defined in ERC721.sol
     //Mapping of the student to the tokenIDs
+
+    //TODO///////////////////////////////////////////
     mapping(address => uint256[]) _takesCourses;
     //Mapping of the tokenID to the students
     mapping(uint256 => address[]) _studentsOf;
     //is Course link exist
+    //TODO///////////////////////////////////////////
+
     mapping(string => bool) _courseExist;
     //List of Course Links
     string[] _courseLinks;

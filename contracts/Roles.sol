@@ -38,10 +38,10 @@ contract Roles is AccessControlEnumerable {
     function revokeInstructorRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(INSTRUCTOR_ROLE, account);}
     function revokeStudentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(STUDENT_ROLE, account);}
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Create Read Delete
+    //1 EF
+    //2 Fen Edb
+    //3 Ibf
+    //4 Mühendislik
+    //5 Uygulamalı Bilimler Yüksekokulu
 }
-//Create Read Delete
-//1 EF
-//2 Fen Edb
-//3 Ibf
-//4 Mühendislik
-//5 Uygulamalı Bilimler Yüksekokulu
