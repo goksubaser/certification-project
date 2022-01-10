@@ -106,5 +106,22 @@ contract("Course", (accounts) => {
             await contract.grantGraduatedRole(accounts[6], {from: accounts[1]}).should.be.rejected;//not Student
             await contract.grantGraduatedRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
         })
+
+        it("Revokes Faculty Role", async() =>{
+            await contract.revokeFacultyRole(accounts[2], {from: accounts[0]}).should.be.rejected;//not Rector
+            await contract.revokeFacultyRole(accounts[2], {from: accounts[1]}).should.not.be.rejected;
+        })
+        it("Revokes Department Role", async() =>{
+            await contract.revokeDepartmentRole(accounts[3], {from: accounts[0]}).should.be.rejected;//not Rector
+            await contract.revokeDepartmentRole(accounts[3], {from: accounts[1]}).should.not.be.rejected;
+        })
+        it("Revokes Instructor Role", async() =>{
+            await contract.revokeInstructorRole(accounts[4], {from: accounts[0]}).should.be.rejected;//not Rector
+            await contract.revokeInstructorRole(accounts[4], {from: accounts[1]}).should.not.be.rejected;
+        })
+        it("Revokes Student Role", async() =>{
+            await contract.revokeStudentRole(accounts[5], {from: accounts[0]}).should.be.rejected;//not Rector
+            await contract.revokeStudentRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
+        })
     })
 })

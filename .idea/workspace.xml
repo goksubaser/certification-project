@@ -19,13 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="RECTOR_ROLE can grant other roles now">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="AccessControl chang into AccessControlEnumerable for read function implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Course.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Course.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Course.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Course.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Diploma.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Diploma.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +99,7 @@
       <workItem from="1641602003552" duration="1327000" />
       <workItem from="1641692630884" duration="28372000" />
       <workItem from="1641761285325" duration="145000" />
-      <workItem from="1641761446435" duration="27150000" />
+      <workItem from="1641761446435" duration="30130000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -138,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641842058290</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="AccessControl chang into AccessControlEnumerable for read function implementation">
+      <created>1641846923142</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641846923142</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +170,8 @@
     <MESSAGE value="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now" />
     <MESSAGE value="GRADUATED_ROLE added" />
     <MESSAGE value="RECTOR_ROLE can grant other roles now" />
-    <option name="LAST_COMMIT_MESSAGE" value="RECTOR_ROLE can grant other roles now" />
+    <MESSAGE value="AccessControl chang into AccessControlEnumerable for read function implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="AccessControl chang into AccessControlEnumerable for read function implementation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
