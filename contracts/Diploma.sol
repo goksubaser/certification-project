@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Roles.sol";
 
-contract Diploma is ERC721, Roles{
+contract Diploma is ERC721, Roles {
 
     //Mapping owner to the tokenID
     mapping(address => uint256) _hasCertificate;
@@ -14,10 +14,12 @@ contract Diploma is ERC721, Roles{
     //List of Diploma Links
     string[] _diplomaLinks;
 
-    constructor() ERC721("Diploma", "DPLM"){}
+    constructor() ERC721("Diploma", "DPLM"){
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);//TODO Transfer Admin to Rector later
+    }
 
     //TODO Change It To Role Based Ownership From Public
-    function mint(string memory _diplomaLink, address graduateAddress) public{
+    function mint(string memory _diplomaLink, address graduateAddress) public onlyRole(RECTOR_ROLE){
         require(!_diplomaExist[_diplomaLink], "This link is already minted");
         require(_hasCertificate[graduateAddress] == 0, "This graduate already has a Diploma");
         //diplomaLinks - add

@@ -19,9 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="GRADUATED_ROLE added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Course.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Course.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Diploma.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Diploma.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +102,7 @@
       <workItem from="1641602003552" duration="1327000" />
       <workItem from="1641692630884" duration="28372000" />
       <workItem from="1641761285325" duration="145000" />
-      <workItem from="1641761446435" duration="15724000" />
+      <workItem from="1641761446435" duration="22945000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -120,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641831840779</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GRADUATED_ROLE added">
+      <created>1641834562493</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641834562493</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +157,8 @@
     <MESSAGE value="New github repo created" />
     <MESSAGE value="Mint functions for Diploma.sol and Course.sol implemented. Unit tests are written. Diploma token is prohibited from transfer after minting." />
     <MESSAGE value="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Roles.sol created and roles needed are defined Diploma.sol and Course.sol inherit it now" />
+    <MESSAGE value="GRADUATED_ROLE added" />
+    <option name="LAST_COMMIT_MESSAGE" value="GRADUATED_ROLE added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
@@ -164,22 +177,22 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="653" y="328" key="Github.ShareDialog/0.0.1600.860@0.0.1600.860" timestamp="1641756479618" />
-    <state width="1557" height="156" key="GridCell.Tab.0.bottom" timestamp="1641761683051">
+    <state width="753" height="155" key="GridCell.Tab.0.bottom" timestamp="1641836480617">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="156" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1641761683051" />
-    <state width="1557" height="156" key="GridCell.Tab.0.center" timestamp="1641761683051">
+    <state width="753" height="155" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1641836480617" />
+    <state width="753" height="155" key="GridCell.Tab.0.center" timestamp="1641836480617">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="156" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1641761683051" />
-    <state width="1557" height="156" key="GridCell.Tab.0.left" timestamp="1641761683051">
+    <state width="753" height="155" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1641836480617" />
+    <state width="753" height="155" key="GridCell.Tab.0.left" timestamp="1641836480617">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="156" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1641761683051" />
-    <state width="1557" height="156" key="GridCell.Tab.0.right" timestamp="1641761683051">
+    <state width="753" height="155" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1641836480617" />
+    <state width="753" height="155" key="GridCell.Tab.0.right" timestamp="1641836480617">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="156" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1641761683051" />
+    <state width="753" height="155" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1641836480617" />
     <state x="301" y="75" key="SettingsEditor" timestamp="1641761312598">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

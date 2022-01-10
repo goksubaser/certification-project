@@ -18,7 +18,9 @@ contract Course is ERC721, Roles{
     //List of Course Links
     string[] _courseLinks;
 
-    constructor() ERC721("Course", "CRS"){}
+    constructor() ERC721("Course", "CRS"){
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);//TODO Transfer Admin to Rector later
+    }
 
     //TODO Change It To Role Based Ownership From Public
     function mint(string memory _courseLink, address instructorAddress) public{
