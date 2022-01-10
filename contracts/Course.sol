@@ -19,12 +19,13 @@ contract Course is ERC721, Roles{
     string[] _courseLinks;
 
     constructor() ERC721("Course", "CRS"){
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);//TODO Transfer Admin to Rector later
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     //TODO Change It To Role Based Ownership From Public
     function mint(string memory _courseLink, address instructorAddress) public{
         require(!_courseExist[_courseLink], "This link is already minted");
+        require(hasRole(INSTRUCTOR_ROLE, instructorAddress), "This address is not an instructor");
         //diplomaLinks - add
         _courseLinks.push(_courseLink);
         uint _id = _courseLinks.length; //tokenID's start from 1 because default uint256 value is 0
@@ -67,7 +68,7 @@ contract Course is ERC721, Roles{
         require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
         super.safeTransferFrom(from, to, tokenId, _data);
     }
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControl) returns (bool) {
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControlEnumerable) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }

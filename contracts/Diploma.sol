@@ -15,21 +15,21 @@ contract Diploma is ERC721, Roles {
     string[] _diplomaLinks;
 
     constructor() ERC721("Diploma", "DPLM"){
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);//TODO Transfer Admin to Rector later
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    //TODO Change It To Role Based Ownership From Public
-    function mint(string memory _diplomaLink, address graduateAddress) public onlyRole(RECTOR_ROLE){
+    function mint(string memory _diplomaLink, address graduatedAddress) public onlyRole(RECTOR_ROLE){
         require(!_diplomaExist[_diplomaLink], "This link is already minted");
-        require(_hasCertificate[graduateAddress] == 0, "This graduate already has a Diploma");
+        require(_hasCertificate[graduatedAddress] == 0, "This graduate already has a Diploma");
+        require(hasRole(GRADUATED_ROLE, graduatedAddress), "This address is not graduate");
         //diplomaLinks - add
         _diplomaLinks.push(_diplomaLink);
         uint _id = _diplomaLinks.length; //tokenID's start from 1 because default uint256 value is 0
         //Call mint of ERC721
-        _mint(graduateAddress, _id);
+        _mint(graduatedAddress, _id);
         //Trace it
         _diplomaExist[_diplomaLink] = true;
-        _hasCertificate[graduateAddress] = _id;
+        _hasCertificate[graduatedAddress] = _id;
     }
     function getDiplomaLinks() public view returns(string[] memory diplomaLinks){
         return _diplomaLinks;
@@ -61,7 +61,7 @@ contract Diploma is ERC721, Roles {
         require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
         super.safeTransferFrom(from, to, tokenId, _data);
     }
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControl) returns (bool) {
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControlEnumerable) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 

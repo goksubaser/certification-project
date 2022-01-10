@@ -74,9 +74,7 @@ contract("Diploma", (accounts) => {
 
     describe("Role functions", async() => {
         it("Grants Rector Role", async() =>{
-            await contract.mint('abc', accounts[1],{from: accounts[1]}).should.be.rejected;
             await contract.grantRectorRole(accounts[1]).should.not.be.rejected;
-            await contract.mint('abc', accounts[0],{from: accounts[1]}).should.not.be.rejected;
         })
         it("Grants Faculty Role", async() =>{
             await contract.grantFacultyRole(accounts[2], {from: accounts[0]}).should.be.rejected;//not Rector
@@ -98,6 +96,10 @@ contract("Diploma", (accounts) => {
             await contract.grantGraduatedRole(accounts[5], {from: accounts[0]}).should.be.rejected;//not Rector
             await contract.grantGraduatedRole(accounts[6], {from: accounts[1]}).should.be.rejected;//not Student
             await contract.grantGraduatedRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
+        })
+        it("Mints Diploma Token", async() =>{
+            await contract.mint("aaa", accounts[0], {from: accounts[1]}).should.be.rejected;//not Graduate
+            await contract.mint("aaa", accounts[5], {from: accounts[1]}).should.not.be.rejected;
         })
     })
 
