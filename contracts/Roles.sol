@@ -17,8 +17,8 @@ contract Roles is AccessControlEnumerable {
         renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
         renounceRole(RECTOR_ROLE, msg.sender);
     }
-    function grantFacultyRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(FACULTY_ROLE, account);}
-    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(DEPARTMENT_ROLE, account);}
+//    function grantFacultyRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(FACULTY_ROLE, account);}
+//    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(DEPARTMENT_ROLE, account);}
     function grantInstructorRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(INSTRUCTOR_ROLE, account);}
     function grantStudentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(STUDENT_ROLE, account);}
     function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
@@ -33,8 +33,8 @@ contract Roles is AccessControlEnumerable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////// DELETE ROLE ///////////////////////////////////////////////////////////////////////////
-    function revokeFacultyRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(FACULTY_ROLE, account);}
-    function revokeDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(DEPARTMENT_ROLE, account);}
+//    function revokeFacultyRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(FACULTY_ROLE, account);}
+//    function revokeDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(DEPARTMENT_ROLE, account);}
     function revokeInstructorRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(INSTRUCTOR_ROLE, account);}
     function revokeStudentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(STUDENT_ROLE, account);}
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

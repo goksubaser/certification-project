@@ -19,13 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Faculty.sol and Department.sol added">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Faculty.sol and Department.sol are now mintable and burnable with a new id generation system. System is successful in unit tests so far">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Department.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Department.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Faculty.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Faculty.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Department.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Department.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Faculty.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Faculty.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +103,7 @@
       <workItem from="1641692630884" duration="28372000" />
       <workItem from="1641761285325" duration="145000" />
       <workItem from="1641761446435" duration="32103000" />
-      <workItem from="1641852754809" duration="16595000" />
+      <workItem from="1641852754809" duration="19918000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -162,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641857310145</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Faculty.sol and Department.sol are now mintable and burnable with a new id generation system. System is successful in unit tests so far">
+      <created>1641872068461</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1641872068461</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +198,8 @@
     <MESSAGE value="AccessControl chang into AccessControlEnumerable for read function implementation" />
     <MESSAGE value="Revoke operations are added" />
     <MESSAGE value="Faculty.sol and Department.sol added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Faculty.sol and Department.sol added" />
+    <MESSAGE value="Faculty.sol and Department.sol are now mintable and burnable with a new id generation system. System is successful in unit tests so far" />
+    <option name="LAST_COMMIT_MESSAGE" value="Faculty.sol and Department.sol are now mintable and burnable with a new id generation system. System is successful in unit tests so far" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">

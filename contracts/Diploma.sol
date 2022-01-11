@@ -21,7 +21,9 @@ contract Diploma is ERC721, Roles {
     function mint(string memory _diplomaLink, address graduatedAddress) public onlyRole(RECTOR_ROLE){
         require(!_diplomaExist[_diplomaLink], "This link is already minted");
         require(_hasCertificate[graduatedAddress] == 0, "This graduate already has a Diploma");
-        require(hasRole(GRADUATED_ROLE, graduatedAddress), "This address is not graduate");
+        require(hasRole(STUDENT_ROLE, graduatedAddress), "This address is not a student");
+        revokeRole(STUDENT_ROLE, graduatedAddress);
+        grantRole(GRADUATED_ROLE, graduatedAddress);
         //diplomaLinks - add
         _diplomaLinks.push(_diplomaLink);
         uint _id = _diplomaLinks.length; //tokenID's start from 1 because default uint256 value is 0

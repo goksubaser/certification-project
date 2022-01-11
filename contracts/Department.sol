@@ -17,6 +17,7 @@ contract Department is ERC721, Roles{
 
     function mint(string memory _departmentName, address departmentAddress) public onlyRole(RECTOR_ROLE){
         require(_IDOfDepartmentName[_departmentName] == 0, "This Department is already exist");
+        grantRole(DEPARTMENT_ROLE, departmentAddress);
         require(hasRole(DEPARTMENT_ROLE, departmentAddress), "This address is not in DEPARTMENT_ROLE");
         require(keccak256(abi.encodePacked(_departmentName)) != keccak256(abi.encodePacked("")), "Department name cannot be empty");
         // Department - add
@@ -32,6 +33,9 @@ contract Department is ERC721, Roles{
         uint _id = _IDOfDepartmentName[_departmentName];
         require(_id != 0, "This Department is not exist");
         require(keccak256(abi.encodePacked(_departmentNameOfID[_id])) == keccak256(abi.encodePacked(_departmentName)), "Department names do not match");
+        //Revoke Role
+        address owner = ownerOf(_id);
+        revokeRole(DEPARTMENT_ROLE, _id);
         _burn(_id);
         _departmentNameOfID[_id] = "";
         _IDOfDepartmentName[_departmentName] = 0;
