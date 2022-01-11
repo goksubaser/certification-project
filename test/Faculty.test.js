@@ -10,23 +10,23 @@ contract("Faculty", (accounts) => {
         contract = await Faculty.deployed()
     })
 
-    // describe("deployment", async() => {
-    //     it("deploys successfully", async() =>{
-    //         const address = contract.address
-    //         assert.notEqual(address, 0x0)
-    //         assert.notEqual(address, '')
-    //         assert.notEqual(address, null)
-    //         assert.notEqual(address, undefined)
-    //     })
-    //     it('has a name', async () =>{
-    //         const name = await contract.name()
-    //         assert.equal(name, 'Faculty')
-    //     })
-    //     it('has a symbol', async () =>{
-    //         const symbol = await contract.symbol()
-    //         assert.equal(symbol, 'FAC')
-    //     })
-    // })
+    describe("deployment", async() => {
+        it("deploys successfully", async() =>{
+            const address = contract.address
+            assert.notEqual(address, 0x0)
+            assert.notEqual(address, '')
+            assert.notEqual(address, null)
+            assert.notEqual(address, undefined)
+        })
+        it('has a name', async () =>{
+            const name = await contract.name()
+            assert.equal(name, 'Faculty')
+        })
+        it('has a symbol', async () =>{
+            const symbol = await contract.symbol()
+            assert.equal(symbol, 'FAC')
+        })
+    })
 
     describe("Role functions", async() => {
         it("Grants Rector Role", async() =>{
@@ -36,44 +36,112 @@ contract("Faculty", (accounts) => {
             await contract.grantFacultyRole(accounts[2], {from: accounts[0]}).should.be.rejected;//not Rector
             await contract.grantFacultyRole(accounts[2], {from: accounts[1]}).should.not.be.rejected;
         })
-        it("Mints Faculty Token", async() =>{
-            await contract.mint("aaa", accounts[0], {from: accounts[1]}).should.be.rejected;//not Faculty
-            await contract.mint("aaa", accounts[2], {from: accounts[1]}).should.not.be.rejected;
+        it("Grants Faculty Role", async() =>{
+            await contract.grantFacultyRole(accounts[3], {from: accounts[1]}).should.not.be.rejected;
         })
-        it("Grants Department Role", async() =>{
-            await contract.grantDepartmentRole(accounts[3], {from: accounts[0]}).should.be.rejected;
-            await contract.grantDepartmentRole(accounts[3], {from: accounts[1]}).should.not.be.rejected;
+        it("Grants Faculty Role", async() =>{
+            await contract.grantFacultyRole(accounts[4], {from: accounts[1]}).should.not.be.rejected;
         })
-        it("Grants Instructor Role", async() =>{
-            await contract.grantInstructorRole(accounts[4], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.grantInstructorRole(accounts[4], {from: accounts[1]}).should.not.be.rejected;
-        })
-        it("Grants Student Role", async() =>{
-            await contract.grantStudentRole(accounts[5], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.grantStudentRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
-        })
-        it("Grants Graduted Role", async() =>{
-            await contract.grantGraduatedRole(accounts[5], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.grantGraduatedRole(accounts[6], {from: accounts[1]}).should.be.rejected;//not Student
-            await contract.grantGraduatedRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
+        it("Grants Faculty Role", async() =>{
+            await contract.grantFacultyRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
         })
 
+    })
+    describe('minting', async () => {
+        it('creates first token', async () => {
+            const result = await contract.mint('abc', accounts[2], {from: accounts[1]})
+            //FAILURE: cannot mint same Faculty Link twice
+            await contract.mint('abc', accounts[2]).should.be.rejected;
+            //FAILURE: cannot mint to un-Faculty
+            await contract.mint('abcd', accounts[1]).should.be.rejected;
+            //SUCCESS
+            const event = result.logs[0].args
+            assert.equal(event.tokenId.toNumber(), 1, 'id is correct')
+            assert.equal(event.from, '0x0000000000000000000000000000000000000000', 'from is correct')
+            assert.equal(event.to, accounts[2], 'to is correct')
+            const facultyName = await contract.getFacultyName(event.tokenId.toNumber())
+            assert.deepEqual(facultyName, "abc", "facultyName is correct")
+            await contract.getFacultyID(facultyName).should.not.be.rejected;
+        })
 
-        it("Revokes Faculty Role", async() =>{
-            await contract.revokeFacultyRole(accounts[2], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.revokeFacultyRole(accounts[2], {from: accounts[1]}).should.not.be.rejected;
+        it('creates second token', async () => {
+            const result = await contract.mint('abcd', accounts[3], {from: accounts[1]})
+            //FAILURES
+            await contract.mint('abc', accounts[3]).should.be.rejected;
+            await contract.mint('abcd', accounts[3]).should.be.rejected;
+            await contract.mint('abcd', accounts[2]).should.be.rejected;
+            //SUCCESS
+            const event = result.logs[0].args
+            assert.equal(event.tokenId.toNumber(), 2, 'id is correct')
+            assert.equal(event.from, '0x0000000000000000000000000000000000000000', 'from is correct')
+            assert.equal(event.to, accounts[3], 'to is correct')
+            const facultyName = await contract.getFacultyName(event.tokenId.toNumber())
+            assert.deepEqual(facultyName, "abcd", "facultyName is correct")
         })
-        it("Revokes Department Role", async() =>{
-            await contract.revokeDepartmentRole(accounts[3], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.revokeDepartmentRole(accounts[3], {from: accounts[1]}).should.not.be.rejected;
+        it('burns first token', async () => {
+            const result = await contract.burn("abc", {from: accounts[1]})
+            //FAILURES
+            await contract.burn("abc", {from: accounts[1]}).should.be.rejected;//Cannot burn again
+            await contract.burn("abcde", {from: accounts[1]}).should.be.rejected;//Cannot burn has not minted one
+            //SUCCESS
+            const event = result.logs[0].args
+            assert.equal(event.tokenId.toNumber(), 1, 'id is correct')
+            assert.equal(event.from, undefined, 'from is correct')
+            assert.equal(event.to, undefined, 'to is correct')
+            const facultyName = await contract.getFacultyName(event.tokenId.toNumber())
+            assert.deepEqual(facultyName, "", "facultyName is deleted")
         })
-        it("Revokes Instructor Role", async() =>{
-            await contract.revokeInstructorRole(accounts[4], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.revokeInstructorRole(accounts[4], {from: accounts[1]}).should.not.be.rejected;
+        it('mints former first token again to another account', async () => {
+            const result = await contract.mint('abc', accounts[4], {from: accounts[1]})
+            //FAILURE: cannot mint same Faculty Link twice
+            await contract.mint('abc', accounts[4]).should.be.rejected;
+            //FAILURE: cannot mint to un-Faculty
+            await contract.mint('abc', accounts[1]).should.be.rejected;
+            //SUCCESS
+            const event = result.logs[0].args
+            assert.equal(event.tokenId.toNumber(), 3, 'id is correct')
+            assert.equal(event.from, '0x0000000000000000000000000000000000000000', 'from is correct')
+            assert.equal(event.to, accounts[4], 'to is correct')
+            const facultyName = await contract.getFacultyName(event.tokenId.toNumber())
+            assert.deepEqual(facultyName, "abc", "facultyName is correct")
         })
-        it("Revokes Student Role", async() =>{
-            await contract.revokeStudentRole(accounts[5], {from: accounts[0]}).should.be.rejected;//not Rector
-            await contract.revokeStudentRole(accounts[5], {from: accounts[1]}).should.not.be.rejected;
+        it('burns first token again newly 3rd token', async () => {
+            const result = await contract.burn("abc", {from: accounts[1]})
+            //FAILURES
+            await contract.burn("abc", {from: accounts[1]}).should.be.rejected;//Cannot burn again
+            await contract.burn("abcde", {from: accounts[1]}).should.be.rejected;//Cannot burn has not minted one
+            //SUCCESS
+            const event = result.logs[0].args
+            assert.equal(event.tokenId.toNumber(), 3, 'id is correct')
+            assert.equal(event.from, undefined, 'from is correct')
+            assert.equal(event.to, undefined, 'to is correct')
+            const facultyName = await contract.getFacultyName(event.tokenId.toNumber())
+            assert.deepEqual(facultyName, "", "facultyName is deleted")
         })
+        it('mints former 3rd token again to same account', async () => {
+            const result = await contract.mint('abc', accounts[4], {from: accounts[1]})
+            //FAILURE: cannot mint same Faculty Link twice
+            await contract.mint('abc', accounts[4]).should.be.rejected;
+            //FAILURE: cannot mint to un-Faculty
+            await contract.mint('abc', accounts[1]).should.be.rejected;
+            //SUCCESS
+            const event = result.logs[0].args
+            assert.equal(event.tokenId.toNumber(), 4, 'id is correct')
+            assert.equal(event.from, '0x0000000000000000000000000000000000000000', 'from is correct')
+            assert.equal(event.to, accounts[4], 'to is correct')
+            const facultyName = await contract.getFacultyName(event.tokenId.toNumber())
+            assert.deepEqual(facultyName, "abc", "facultyName is correct")
+        })
+
+        // it('trying transfer first token', async () => {//Transfer Prohibition Test
+        //     let owner1 = await contract.ownerOf(1);
+        //     let owner2 = await contract.ownerOf(2);
+        //     assert.equal(owner1, accounts[2])
+        //     assert.equal(owner2, accounts[3])
+        //     await contract.transferFrom(accounts[2], accounts[3], 1).should.be.rejected;
+        //     owner1 = await contract.ownerOf(1);
+        //     assert.equal(owner1, accounts[2])
+        //     assert.notEqual(owner1, accounts[3])
+        // })
     })
 })
