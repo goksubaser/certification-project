@@ -35,7 +35,7 @@ contract Department is ERC721, Roles{
         require(keccak256(abi.encodePacked(_departmentNameOfID[_id])) == keccak256(abi.encodePacked(_departmentName)), "Department names do not match");
         //Revoke Role
         address owner = ownerOf(_id);
-        revokeRole(DEPARTMENT_ROLE, _id);
+        revokeRole(DEPARTMENT_ROLE, owner);
         _burn(_id);
         _departmentNameOfID[_id] = "";
         _IDOfDepartmentName[_departmentName] = 0;

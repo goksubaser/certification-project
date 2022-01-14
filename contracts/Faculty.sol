@@ -35,7 +35,7 @@ contract Faculty is ERC721, Roles{
         require(keccak256(abi.encodePacked(_facultyNameOfID[_id])) == keccak256(abi.encodePacked(_facultyName)), "Faculty names do not match");
         //Revoke Role
         address owner = ownerOf(_id);
-        revokeRole(FACULTY_ROLE, _id);
+        revokeRole(FACULTY_ROLE, owner);
         _burn(_id);
         _facultyNameOfID[_id] = "";
         _IDOfFacultyName[_facultyName] = 0;

@@ -21,13 +21,19 @@ contract Roles is AccessControlEnumerable {
 //    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(DEPARTMENT_ROLE, account);}
     function grantInstructorRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(INSTRUCTOR_ROLE, account);}
     function grantStudentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(STUDENT_ROLE, account);}
-    function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
-        require(hasRole(STUDENT_ROLE, account));
-        revokeRole(STUDENT_ROLE, account);
-        grantRole(GRADUATED_ROLE, account);
-    }
+//    function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
+//        require(hasRole(STUDENT_ROLE, account));
+//        revokeRole(STUDENT_ROLE, account);
+//        grantRole(GRADUATED_ROLE, account);
+//    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////// READ ROLE /////////////////////////////////////////////////////////////////////////////
+    function hasRectorRole(address account) public view returns (bool){return hasRole(RECTOR_ROLE, account);}
+    function hasFacultyRole(address account) public view returns (bool){return hasRole(FACULTY_ROLE, account);}
+    function hasDepartmentRole(address account) public view returns (bool){return hasRole(DEPARTMENT_ROLE, account);}
+    function hasInstructorRole(address account) public view returns (bool){return hasRole(INSTRUCTOR_ROLE, account);}
+    function hasStudentRole(address account) public view returns (bool){return hasRole(STUDENT_ROLE, account);}
+    function hasGraduatedRole(address account) public view returns (bool){return hasRole(GRADUATED_ROLE, account);}
 
     //TODO It is left for the front-end
 
