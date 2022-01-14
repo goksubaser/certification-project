@@ -11,6 +11,7 @@ contract Roles is AccessControlEnumerable {
     bytes32 public constant GRADUATED_ROLE = keccak256("GRADUATED_ROLE");
 
     //////////////////////////// CREATE ROLE ///////////////////////////////////////////////////////////////////////////
+    //TODO One Address should have only one role. Handle it
     function grantRectorRole(address account) public onlyRole(RECTOR_ROLE) {
         grantRole(RECTOR_ROLE, account);
         grantRole(DEFAULT_ADMIN_ROLE, account);
