@@ -43,8 +43,11 @@ contract Faculty is ERC721, Roles{
     function getFacultyName(uint256 id) public view returns(string memory facultyName){
         return _facultyNameOfID[id];
     }
-    function getFacultyID(string memory facultyName) public{
-        emit showUint(_IDOfFacultyName[facultyName]);
+    function getFacultyID(string memory facultyName) public view returns(uint256 facultyID){
+        return _IDOfFacultyName[facultyName];
+    }
+    function getTotalSupply() public view returns(uint256 totalSupply){
+        return _totalSupply;
     }
 
     function transferFrom(//Only callable when minted

@@ -19,12 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="grant and revoke role functions are called from Roles.sol instead of AccessControl.sol">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Course.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Course.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Diploma.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Diploma.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Migrations.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Migrations.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Department.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Department.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Faculty.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Faculty.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usefulCommands" beforeDir="false" afterPath="$PROJECT_DIR$/usefulCommands" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +106,7 @@
       <workItem from="1641761446435" duration="32103000" />
       <workItem from="1641852754809" duration="26141000" />
       <workItem from="1642082730293" duration="11334000" />
-      <workItem from="1642166559643" duration="6963000" />
+      <workItem from="1642166559643" duration="14580000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -190,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642179050336</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Minor changes">
+      <created>1642184216569</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1642184216569</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,9 +231,9 @@
     <MESSAGE value="Faculty.sol and Department.sol added" />
     <MESSAGE value="Faculty.sol and Department.sol are now mintable and burnable with a new id generation system. System is successful in unit tests so far" />
     <MESSAGE value="Faculty.sol and Department.sol are now mint and burn functions grants and revokes corresponding roles for them for address editting. Also Diploma.sol mint function is now expecting the address be a student and changes their role to GRADUATE_ROLE from STUDENT_ROLE" />
-    <MESSAGE value="Minor changes" />
     <MESSAGE value="grant and revoke role functions are called from Roles.sol instead of AccessControl.sol" />
-    <option name="LAST_COMMIT_MESSAGE" value="grant and revoke role functions are called from Roles.sol instead of AccessControl.sol" />
+    <MESSAGE value="Minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">

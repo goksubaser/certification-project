@@ -1,6 +1,7 @@
 migrate --reset
 
 d = await Diploma.deployed()
+f = await Faculty.deployed()
 account = accounts[0]
 
 d.mint("aaa", accounts[0])

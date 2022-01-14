@@ -43,10 +43,12 @@ contract Department is ERC721, Roles{
     function getDepartmentName(uint256 id) public view returns(string memory departmentName){
         return _departmentNameOfID[id];
     }
-    function getDepartmentID(string memory departmentName) public{
-        emit showUint(_IDOfDepartmentName[departmentName]);
+    function getDepartmentID(string memory departmentName) public view returns(uint256 departmentID){
+        return _IDOfDepartmentName[departmentName];
     }
-
+    function getTotalSupply() public view returns(uint256 totalSupply){
+        return _totalSupply;
+    }
     function transferFrom(//Only callable when minted
         address from,
         address to,
