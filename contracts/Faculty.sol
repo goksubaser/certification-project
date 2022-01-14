@@ -17,7 +17,8 @@ contract Faculty is ERC721, Roles{
 
     function mint(string memory _facultyName, address facultyAddress) public onlyRole(RECTOR_ROLE){
         require(_IDOfFacultyName[_facultyName] == 0, "This Faculty is already exist");
-        grantRole(FACULTY_ROLE, facultyAddress);
+//        grantRole(FACULTY_ROLE, facultyAddress);
+        grantFacultyRole(facultyAddress);
         require(hasRole(FACULTY_ROLE, facultyAddress), "This address is not in FACULTY_ROLE");
         require(keccak256(abi.encodePacked(_facultyName)) != keccak256(abi.encodePacked("")), "Faculty name cannot be empty");
         // Faculty - add
@@ -35,7 +36,8 @@ contract Faculty is ERC721, Roles{
         require(keccak256(abi.encodePacked(_facultyNameOfID[_id])) == keccak256(abi.encodePacked(_facultyName)), "Faculty names do not match");
         //Revoke Role
         address owner = ownerOf(_id);
-        revokeRole(FACULTY_ROLE, owner);
+//        revokeRole(FACULTY_ROLE, owner);
+        revokeFacultyRole(owner);
         _burn(_id);
         _facultyNameOfID[_id] = "";
         _IDOfFacultyName[_facultyName] = 0;

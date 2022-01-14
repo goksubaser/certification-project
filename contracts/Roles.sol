@@ -17,15 +17,15 @@ contract Roles is AccessControlEnumerable {
         renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
         renounceRole(RECTOR_ROLE, msg.sender);
     }
-//    function grantFacultyRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(FACULTY_ROLE, account);}
-//    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(DEPARTMENT_ROLE, account);}
+    function grantFacultyRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(FACULTY_ROLE, account);}
+    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(DEPARTMENT_ROLE, account);}
     function grantInstructorRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(INSTRUCTOR_ROLE, account);}
     function grantStudentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(STUDENT_ROLE, account);}
-//    function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
-//        require(hasRole(STUDENT_ROLE, account));
-//        revokeRole(STUDENT_ROLE, account);
-//        grantRole(GRADUATED_ROLE, account);
-//    }
+    function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
+        require(hasRole(STUDENT_ROLE, account), "The address is not a student");
+        revokeRole(STUDENT_ROLE, account);
+        grantRole(GRADUATED_ROLE, account);
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////// READ ROLE /////////////////////////////////////////////////////////////////////////////
     function hasRectorRole(address account) public view returns (bool){return hasRole(RECTOR_ROLE, account);}
@@ -39,8 +39,8 @@ contract Roles is AccessControlEnumerable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////// DELETE ROLE ///////////////////////////////////////////////////////////////////////////
-//    function revokeFacultyRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(FACULTY_ROLE, account);}
-//    function revokeDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(DEPARTMENT_ROLE, account);}
+    function revokeFacultyRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(FACULTY_ROLE, account);}
+    function revokeDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(DEPARTMENT_ROLE, account);}
     function revokeInstructorRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(INSTRUCTOR_ROLE, account);}
     function revokeStudentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(STUDENT_ROLE, account);}
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
