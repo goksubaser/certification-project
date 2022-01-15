@@ -46,12 +46,12 @@ contract Roles is AccessControlEnumerable {
     function hasStudentRole(address account) public view returns (bool){return hasRole(STUDENT_ROLE, account);}
     function hasGraduatedRole(address account) public view returns (bool){return hasRole(GRADUATED_ROLE, account);}
 
-    function getRector() public view returns(address){return Rector;}
-    function getFaculties() public view returns(address[] memory){return Faculties;}
-    function getDepartments() public view returns(address[] memory){return Departments;}
-    function getInstructors() public view returns(address[] memory){return Instructors;}
-    function getStudents() public view returns(address[] memory){return Students;}
-    function getGraduateds() public view returns(address[] memory){return Graduateds;}
+    function getRectorRole() public view returns(address){return Rector;}
+    function getFacultyRoles() public view returns(address[] memory){return Faculties;}
+    function getDepartmentRoles() public view returns(address[] memory){return Departments;}
+    function getInstructorRoles() public view returns(address[] memory){return Instructors;}
+    function getStudentRoles() public view returns(address[] memory){return Students;}
+    function getGraduatedRoles() public view returns(address[] memory){return Graduateds;}
 
     //TODO It is left for the front-end
 

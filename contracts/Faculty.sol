@@ -9,6 +9,7 @@ contract Faculty is ERC721, Roles{
     mapping(uint256 => string) _facultyNameOfID;
     //mapping from facultyName to tokenID
     mapping(string => uint256) _IDOfFacultyName;
+    address[] departments;
 
     constructor() ERC721("Faculty", "FAC") public{
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);

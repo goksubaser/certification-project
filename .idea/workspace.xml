@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="It can keep track of the roles via added variables to Roles.sol">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Faculty.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Faculty.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +102,7 @@
       <workItem from="1641761446435" duration="32103000" />
       <workItem from="1641852754809" duration="26141000" />
       <workItem from="1642082730293" duration="11334000" />
-      <workItem from="1642166559643" duration="20623000" />
+      <workItem from="1642166559643" duration="22331000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -208,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642206610475</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="minor changes">
+      <created>1642208126224</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1642208126224</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +251,8 @@
     <MESSAGE value="grant and revoke role functions are called from Roles.sol instead of AccessControl.sol" />
     <MESSAGE value="Minor changes" />
     <MESSAGE value="It can keep track of the roles via added variables to Roles.sol" />
-    <option name="LAST_COMMIT_MESSAGE" value="It can keep track of the roles via added variables to Roles.sol" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
