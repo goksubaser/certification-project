@@ -13,6 +13,7 @@ contract Department is ERC721, Roles{
     constructor() ERC721("Department", "DEP") public{
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
+        grantRectorRole(msg.sender);
     }
 
     function mint(string memory _departmentName, address departmentAddress) public onlyRole(RECTOR_ROLE){

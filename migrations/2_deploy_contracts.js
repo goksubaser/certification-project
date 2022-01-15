@@ -6,9 +6,9 @@ const Department = artifacts.require("Department");
 
 
 module.exports = function (deployer) {
-    deployer.deploy(Diploma);
-    deployer.deploy(Course);
     deployer.deploy(Roles);
-    deployer.deploy(Faculty);
+    deployer.deploy(Course);
     deployer.deploy(Department);
+    deployer.deploy(Diploma);
+    deployer.deploy(Faculty);
 };

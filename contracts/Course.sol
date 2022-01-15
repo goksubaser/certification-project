@@ -24,6 +24,7 @@ contract Course is ERC721, Roles{
     constructor() ERC721("Course", "CRS"){
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
+        grantRectorRole(msg.sender);
     }
 
     //TODO Change It To Role Based Ownership From Public
