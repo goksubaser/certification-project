@@ -9,7 +9,8 @@ contract Faculty is ERC721, Roles{
     mapping(uint256 => string) _facultyNameOfID;
     //mapping from facultyName to tokenID
     mapping(string => uint256) _IDOfFacultyName;
-    address[] departments;
+    //mapping from tokenID to its departments
+    mapping(uint256 => address[]) _departments;
 
     constructor() ERC721("Faculty", "FAC") public{
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
@@ -31,25 +32,32 @@ contract Faculty is ERC721, Roles{
         _IDOfFacultyName[_facultyName] = _id;
         _facultyNameOfID[_id] = _facultyName;
     }
-    function burn(string memory _facultyName) public onlyRole(RECTOR_ROLE){
-        uint _id = _IDOfFacultyName[_facultyName];
-        require(_id != 0, "This Faculty is not exist");
-        require(keccak256(abi.encodePacked(_facultyNameOfID[_id])) == keccak256(abi.encodePacked(_facultyName)), "Faculty names do not match");
-        //Revoke Role
-        address owner = ownerOf(_id);
-        revokeFacultyRole(owner);
-        _burn(_id);
-        _facultyNameOfID[_id] = "";
-        _IDOfFacultyName[_facultyName] = 0;
-    }
-    function getFacultyName(uint256 id) public view returns(string memory facultyName){
+//    function burn(string memory _facultyName) public onlyRole(RECTOR_ROLE){
+//        uint _id = _IDOfFacultyName[_facultyName];
+//        require(_id != 0, "This Faculty is not exist");
+//        require(keccak256(abi.encodePacked(_facultyNameOfID[_id])) == keccak256(abi.encodePacked(_facultyName)), "Faculty names do not match");
+//        //Revoke Role
+//        address owner = ownerOf(_id);
+//        revokeFacultyRole(owner);
+//        _burn(_id);
+//        _facultyNameOfID[_id] = "";
+//        _IDOfFacultyName[_facultyName] = 0;
+//    }
+    function getFacultyName(uint256 id) public view returns(string memory){
         return _facultyNameOfID[id];
     }
-    function getFacultyID(string memory facultyName) public view returns(uint256 facultyID){
+    function getFacultyID(string memory facultyName) public view returns(uint256){
         return _IDOfFacultyName[facultyName];
     }
-    function getTotalSupply() public view returns(uint256 totalSupply){
+    function getTotalSupply() public view returns(uint256){
         return _totalSupply;
+    }
+    function getDepartments(uint256 id) public view returns(address[] memory){
+        return _departments[id];
+    }
+    //TODO handle public visiblity to onlyRole
+    function setDepartments(uint256 id, address[] memory departments) public{
+        _departments[id] = departments;
     }
 
     function transferFrom(//Only callable when minted
@@ -81,5 +89,4 @@ contract Faculty is ERC721, Roles{
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControlEnumerable) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
-    event showUint(uint256);
 }
