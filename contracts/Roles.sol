@@ -10,6 +10,7 @@ contract Roles is AccessControlEnumerable {
     bytes32 public constant STUDENT_ROLE = keccak256("STUDENT_ROLE");
     bytes32 public constant GRADUATED_ROLE = keccak256("GRADUATED_ROLE");
 
+    //Unordered lists of roles
     address Rector;
     address[] Faculties;
     address[] Departments;
