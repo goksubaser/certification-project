@@ -16,8 +16,7 @@ contract Diploma is ERC721, Roles {
     constructor() ERC721("Diploma", "DPLM"){
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
-        grantRectorRole(msg.sender);
-
+//        grantRectorRole(msg.sender);
     }
 
     function mint(string memory _diplomaLink, address graduatedAddress) public onlyRole(RECTOR_ROLE){
