@@ -18,7 +18,7 @@ contract Department is ERC721, Roles{
     //mapping from tokenID to its Student Addresses
     mapping(uint256 => address[]) _students;
 
-    constructor() ERC721("Department", "DEP") public{
+    constructor() ERC721("Department", "DEP"){
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
 //        grantRectorRole(msg.sender);
