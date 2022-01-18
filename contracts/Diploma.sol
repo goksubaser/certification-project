@@ -5,6 +5,13 @@ import "./Roles.sol";
 
 contract Diploma is ERC721, Roles {
 
+    struct DiplomaRequest{
+        address studentAddress;
+        string diplomaLink;
+        address requestorDepartment;
+        bool atRector;
+    }
+
     //Mapping owner to the tokenID
     mapping(address => uint256) _hasCertificate;
     //Mapping tokenID to the owner is defined in ERC721.sol as ownerOf
@@ -13,27 +20,54 @@ contract Diploma is ERC721, Roles {
     //List of Diploma Links
     string[] _diplomaLinks;
 
+    //DiplomaRequest list
+    DiplomaRequest[] _requests;
+    //is Diploma link in _requests exist
+    mapping(string => bool) _linkRequestExist;
+    //is Diploma student in _requests exist
+    mapping(address => bool) _studentRequestExist;
+
     constructor() ERC721("Diploma", "DPLM"){
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
 //        grantRectorRole(msg.sender);
     }
-
-    function mint(string memory _diplomaLink, address graduatedAddress) public onlyRole(RECTOR_ROLE){
+    function mint(string memory _diplomaLink, address _graduatedAddress) public onlyRole(RECTOR_ROLE){
+        require(hasRole(STUDENT_ROLE, _graduatedAddress), "This address is not in STUDENT_ROLE");
         require(!_diplomaExist[_diplomaLink], "This link is already minted");
-        require(_hasCertificate[graduatedAddress] == 0, "This graduate already has a Diploma");
-        grantGraduatedRole(graduatedAddress);
+        require(_hasCertificate[_graduatedAddress] == 0, "This graduate already has a Diploma");
+        grantGraduatedRole(_graduatedAddress);
         //diplomaLinks - add
         _diplomaLinks.push(_diplomaLink);
         uint _id = _diplomaLinks.length; //tokenID's start from 1 because default uint256 value is 0
         //Call mint of ERC721
-        _mint(graduatedAddress, _id);
+        _mint(_graduatedAddress, _id);
         //Trace it
         _diplomaExist[_diplomaLink] = true;
-        _hasCertificate[graduatedAddress] = _id;
+        _hasCertificate[_graduatedAddress] = _id;
+    }
+    function createRequest(string memory _diplomaLink, address _graduatedAddress) public onlyRole(DEPARTMENT_ROLE){
+        require(hasRole(STUDENT_ROLE, _graduatedAddress), "This address is not in STUDENT_ROLE");
+        require(!_diplomaExist[_diplomaLink], "This link is already minted");
+        require(_hasCertificate[_graduatedAddress] == 0, "This graduate already has a Diploma");
+        require(!_linkRequestExist[_diplomaLink], "This link is already requested before");
+        require(!_studentRequestExist[_graduatedAddress], "This student's diploma is already requested before");
+        DiplomaRequest memory request = DiplomaRequest(_graduatedAddress,_diplomaLink, msg.sender, false);
+        _requests.push(request);
+        _linkRequestExist[_diplomaLink] = true;
+        _studentRequestExist[_graduatedAddress] = true;
+    }
+    function approveRequest() public onlyRole(FACULTY_ROLE){
+
+    }
+    function disapproveRequest() public onlyRole(FACULTY_ROLE){
+
     }
     function getDiplomaLinks() public view returns(string[] memory diplomaLinks){
         return _diplomaLinks;
+    }
+    function getDiplomaRequests() public view returns (DiplomaRequest[] memory){
+        return _requests;
     }
 
     //TODO Contract Owner can make mistakes when minting. Token should be somewhat editable for contract owner
