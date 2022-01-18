@@ -16,7 +16,6 @@ contract Faculty is ERC721{
     mapping(uint256 => address[]) _departments;
 
     constructor(address _rolesContractAddress) ERC721("Faculty", "FAC"){
-//        grantRectorRole(msg.sender);
         rolesContractAddress =_rolesContractAddress;
     }
 
@@ -35,17 +34,6 @@ contract Faculty is ERC721{
         _IDOfFacultyName[_facultyName] = _id;
         _facultyNameOfID[_id] = _facultyName;
     }
-//    function burn(string memory _facultyName) public onlyRole(RECTOR_ROLE){
-//        uint _id = _IDOfFacultyName[_facultyName];
-//        require(_id != 0, "This Faculty is not exist");
-//        require(keccak256(abi.encodePacked(_facultyNameOfID[_id])) == keccak256(abi.encodePacked(_facultyName)), "Faculty names do not match");
-//        //Revoke Role
-//        address owner = ownerOf(_id);
-//        revokeFacultyRole(owner);
-//        _burn(_id);
-//        _facultyNameOfID[_id] = "";
-//        _IDOfFacultyName[_facultyName] = 0;
-//    }
     function getFacultyName(uint256 id) public view returns(string memory){
         return _facultyNameOfID[id];
     }
@@ -60,6 +48,7 @@ contract Faculty is ERC721{
     }
     //TODO handle public visiblity to onlyRole
     function setDepartments(uint256 id, address[] memory departments) public{
+        require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
         _departments[id] = departments;
     }
 

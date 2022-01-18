@@ -2,10 +2,12 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./Roles.sol";
+import "./Faculty.sol";
 
-contract Department is ERC721, Roles{
+contract Department is ERC721{
 
     address rolesContractAddress;
+    address facultyContractAddress;
 
     uint256 _totalSupply = 0;
     //mapping from tokenID to departmentName
@@ -13,7 +15,6 @@ contract Department is ERC721, Roles{
     //mapping from departmentName to tokenID
     mapping(string => uint256) _IDOfDepartmentName;
 
-    //TODO test below
     //mapping from tokenID to its Faculty Address
     mapping(uint256 => address) _faculty;
     //mapping from tokenID to its Instructor Addresses
@@ -21,19 +22,18 @@ contract Department is ERC721, Roles{
     //mapping from tokenID to its Student Addresses
     mapping(uint256 => address[]) _students;
 
-    constructor(address _rolesContractAddress) ERC721("Department", "DEP"){
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(RECTOR_ROLE, msg.sender);
-//        grantRectorRole(msg.sender);
+    constructor(address _rolesContractAddress, address _facultyContractAddress) ERC721("Department", "DEP"){
         rolesContractAddress =_rolesContractAddress;
+        facultyContractAddress = _facultyContractAddress;
     }
 
-    function mint(string memory _departmentName, address departmentAddress, address facultyAddress) public onlyRole(RECTOR_ROLE){
+    function mint(string memory _departmentName, address departmentAddress, address facultyAddress) public{
+        require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This account does not have Rector Permissions");
         require(_IDOfDepartmentName[_departmentName] == 0, "This Department is already exist");
-        grantDepartmentRole(departmentAddress);
-        require(hasRole(DEPARTMENT_ROLE, departmentAddress), "This departmentAddress is not in DEPARTMENT_ROLE");
+        Roles(rolesContractAddress).grantDepartmentRole(departmentAddress);
+        require(Roles(rolesContractAddress).hasDepartmentRole(departmentAddress), "This departmentAddress is not in DEPARTMENT_ROLE");
         require(keccak256(abi.encodePacked(_departmentName)) != keccak256(abi.encodePacked("")), "Department name cannot be empty");
-        require(hasRole(FACULTY_ROLE, facultyAddress), "This facultyAddress is not in FACULTY_ROLE");
+        require(Roles(rolesContractAddress).hasFacultyRole(facultyAddress), "This facultyAddress is not in FACULTY_ROLE");
         // Department - add
         _totalSupply = _totalSupply + 1;
         uint _id = _totalSupply; //tokenID's start from 1 because default uint256 value is 0
@@ -43,18 +43,24 @@ contract Department is ERC721, Roles{
         _IDOfDepartmentName[_departmentName] = _id;
         _departmentNameOfID[_id] = _departmentName;
         _faculty[_id] = facultyAddress;
+        //Add to Faculty's Departments List
+        uint256 totalSupply = Faculty(facultyContractAddress).getTotalSupply();
+        uint256 facultyID = 0;
+        for(uint i = 1; i<=totalSupply; i++){
+            if(Faculty(facultyContractAddress).ownerOf(i) == facultyAddress){
+                facultyID = i;
+                break;
+            }
+        }
+        require(facultyID>0, "Faculty cannot found");
+        address[] memory departments = Faculty(facultyContractAddress).getDepartments(facultyID);
+        address[] memory newDepartments = new address[](departments.length+1);
+        for(uint i = 0; i<departments.length; i++){
+            newDepartments[i] = departments[i];
+        }
+        newDepartments[newDepartments.length-1] = departmentAddress;
+        Faculty(facultyContractAddress).setDepartments(facultyID,newDepartments);
     }
-//    function burn(string memory _departmentName) public onlyRole(RECTOR_ROLE){
-//        uint _id = _IDOfDepartmentName[_departmentName];
-//        require(_id != 0, "This Department is not exist");
-//        require(keccak256(abi.encodePacked(_departmentNameOfID[_id])) == keccak256(abi.encodePacked(_departmentName)), "Department names do not match");
-//        //Revoke Role
-//        address owner = ownerOf(_id);
-//        revokeDepartmentRole(owner);
-//        _burn(_id);
-//        _departmentNameOfID[_id] = "";
-//        _IDOfDepartmentName[_departmentName] = 0;
-//    }
     function getDepartmentName(uint256 id) public view returns(string memory departmentName){
         return _departmentNameOfID[id];
     }
@@ -105,8 +111,5 @@ contract Department is ERC721, Roles{
     ) public virtual override {
         require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
         super.safeTransferFrom(from, to, tokenId, _data);
-    }
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControlEnumerable) returns (bool) {
-        return super.supportsInterface(interfaceId);
     }
 }

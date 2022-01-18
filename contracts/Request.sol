@@ -1,10 +1,12 @@
 pragma solidity ^0.8.10;
 
 import "./Department.sol";
+import "./Roles.sol";
 
 contract Request {
 
     address departmentContractAddress;
+    address rolesContractAddress;
 
     struct DiplomaRequest{
         address studentAddress;
@@ -19,14 +21,15 @@ contract Request {
     //is Diploma student in _diplomaRequests exist
     mapping(address => bool) _studentRequestExist;
 
-    constructor(address _departmentContractAddress){
+    constructor(address _departmentContractAddress, address _rolesContractAddress){
         departmentContractAddress = _departmentContractAddress;
+        rolesContractAddress = _rolesContractAddress;
     }
 
     function createDiplomaRequest(string memory _diplomaLink, address _graduatedAddress) public{
         //Requirements
-        require(Department(departmentContractAddress).hasDepartmentRole(msg.sender), "This address is not department");
-        require(Department(departmentContractAddress).hasStudentRole(_graduatedAddress), "This address is not in STUDENT_ROLE");
+        require(Roles(rolesContractAddress).hasDepartmentRole(msg.sender), "This address is not department");
+        require(Roles(rolesContractAddress).hasStudentRole(_graduatedAddress), "This address is not in STUDENT_ROLE");
         require(!_linkDiplomaExist[_diplomaLink], "This link is already requested before");
         require(!_studentRequestExist[_graduatedAddress], "This student's diploma is already requested before");
         uint256 departmentID = getDepartmentID(msg.sender);
@@ -46,7 +49,7 @@ contract Request {
     }
     function approveDiplomaRequest(DiplomaRequest memory diplomaRequest) public{
         //Requirements
-        require(Department(departmentContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
         require(diplomaRequest.atRector == false, "This request is approved already");
         require(_linkDiplomaExist[diplomaRequest.diplomaLink], "This link is not requested");
         require(_studentRequestExist[diplomaRequest.studentAddress], "This student's diploma is not requested");
@@ -63,7 +66,7 @@ contract Request {
         }
     }
     function disapproveDiplomaRequest() public{
-        require(Department(departmentContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
     }
     function getDiplomaRequests() public view returns (DiplomaRequest[] memory){
         return _diplomaRequests;
@@ -82,8 +85,8 @@ contract Request {
 
     function createCourseRequest(string memory _courseLink, address _instructorAddress) public{
         //Requirements
-        require(Department(departmentContractAddress).hasDepartmentRole(msg.sender), "This address is not department");
-        require(Department(departmentContractAddress).hasInstructorRole(_instructorAddress), "This address is not in INSTRUCTOR_ROLE");
+        require(Roles(rolesContractAddress).hasDepartmentRole(msg.sender), "This address is not department");
+        require(Roles(rolesContractAddress).hasInstructorRole(_instructorAddress), "This address is not in INSTRUCTOR_ROLE");
         require(!_linkCourseExist[_courseLink], "This link is already requested before");
         uint256 departmentID = getDepartmentID(msg.sender);
         require(departmentID > 0, "Requestor Department cannot found");
@@ -101,10 +104,10 @@ contract Request {
     }
     function approveCourseRequest(CourseRequest memory courseRequest) public{
         //Requirements
-        require(Department(departmentContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
     }
     function disapproveCourseRequest() public{
-        require(Department(departmentContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
     }
     function getCourseRequests() public view returns (CourseRequest[] memory){
         return _courseRequests;
