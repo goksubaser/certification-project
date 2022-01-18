@@ -4,7 +4,9 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./Roles.sol";
 import "./Department.sol";
 
-contract Diploma is ERC721, Roles {
+contract Diploma is ERC721{
+
+    address rolesContractAddress;
 
     //Mapping owner to the tokenID
     mapping(address => uint256) _hasCertificate;
@@ -14,16 +16,15 @@ contract Diploma is ERC721, Roles {
     //List of Diploma Links
     string[] _diplomaLinks;
 
-    constructor() ERC721("Diploma", "DPLM"){
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(RECTOR_ROLE, msg.sender);
-//        grantRectorRole(msg.sender);
+    constructor(address _rolesContractAddress) ERC721("Diploma", "DPLM"){
+        rolesContractAddress = _rolesContractAddress;
     }
-    function mint(string memory _diplomaLink, address _graduatedAddress) public onlyRole(RECTOR_ROLE){
-        require(hasRole(STUDENT_ROLE, _graduatedAddress), "This address is not in STUDENT_ROLE");
+    function mint(string memory _diplomaLink, address _graduatedAddress) public{
+        require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This account has not Rector Permissions");
+        require(Roles(rolesContractAddress).hasStudentRole(_graduatedAddress), "This address is not in STUDENT_ROLE");
         require(!_diplomaExist[_diplomaLink], "This link is already minted");
         require(_hasCertificate[_graduatedAddress] == 0, "This graduate already has a Diploma");
-        grantGraduatedRole(_graduatedAddress);
+        Roles(rolesContractAddress).grantGraduatedRole(_graduatedAddress);
         //diplomaLinks - add
         _diplomaLinks.push(_diplomaLink);
         uint _id = _diplomaLinks.length; //tokenID's start from 1 because default uint256 value is 0
@@ -65,8 +66,4 @@ contract Diploma is ERC721, Roles {
         require(msg.sender == 0x0000000000000000000000000000000000000000, "Transfer after mint is prohibited");
         super.safeTransferFrom(from, to, tokenId, _data);
     }
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControlEnumerable) returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
-
 }

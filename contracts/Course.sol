@@ -5,6 +5,8 @@ import "./Roles.sol";
 
 contract Course is ERC721, Roles{
 
+    address rolesContractAddress;
+
     //Mapping of the instructor to the tokenIDs
     mapping(address => uint256[]) _givesCourses;
     //Mapping of the tokenID to the owner is defined in ERC721.sol
@@ -21,10 +23,11 @@ contract Course is ERC721, Roles{
     //List of Course Links
     string[] _courseLinks;
 
-    constructor() ERC721("Course", "CRS"){
+    constructor(address _rolesContractAddress) ERC721("Course", "CRS"){
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
 //        grantRectorRole(msg.sender);
+        rolesContractAddress =_rolesContractAddress;
     }
 
     //TODO Change It To Role Based Ownership From Public

@@ -4,6 +4,9 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./Roles.sol";
 
 contract Department is ERC721, Roles{
+
+    address rolesContractAddress;
+
     uint256 _totalSupply = 0;
     //mapping from tokenID to departmentName
     mapping(uint256 => string) _departmentNameOfID;
@@ -18,10 +21,11 @@ contract Department is ERC721, Roles{
     //mapping from tokenID to its Student Addresses
     mapping(uint256 => address[]) _students;
 
-    constructor() ERC721("Department", "DEP"){
+    constructor(address _rolesContractAddress) ERC721("Department", "DEP"){
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
 //        grantRectorRole(msg.sender);
+        rolesContractAddress =_rolesContractAddress;
     }
 
     function mint(string memory _departmentName, address departmentAddress, address facultyAddress) public onlyRole(RECTOR_ROLE){

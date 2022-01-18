@@ -19,8 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="ENOENT">
-      <change afterPath="$PROJECT_DIR$/contracts/Request.sol" afterDir="false" />
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Request.sol has the diploma and course request creation functions. Approval and disapproval functions not tested, completed yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/contracts/Address.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Address.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/contracts/Context.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Context.json" afterDir="false" />
@@ -32,10 +31,14 @@
       <change beforePath="$PROJECT_DIR$/build/contracts/IERC721Receiver.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/IERC721Receiver.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/contracts/Migrations.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Migrations.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/contracts/Strings.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Strings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Course.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Course.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Department.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Department.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Diploma.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Diploma.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Faculty.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Faculty.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Request.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Request.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/3_deploy_laters.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/truffle-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/truffle-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +117,7 @@
       <workItem from="1641852754809" duration="26141000" />
       <workItem from="1642082730293" duration="11334000" />
       <workItem from="1642166559643" duration="42575000" />
-      <workItem from="1642470804813" duration="27144000" />
+      <workItem from="1642470804813" duration="32865000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -270,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642492430224</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Request.sol has the diploma and course request creation functions. Approval and disapproval functions not tested, completed yet">
+      <created>1642502750020</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1642502750020</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +319,8 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Diploma.sol DEPARTMENT_ROLE can now create diploma requests to submit for faculty approval" />
     <MESSAGE value="ENOENT" />
-    <option name="LAST_COMMIT_MESSAGE" value="ENOENT" />
+    <MESSAGE value="Request.sol has the diploma and course request creation functions. Approval and disapproval functions not tested, completed yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Request.sol has the diploma and course request creation functions. Approval and disapproval functions not tested, completed yet" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
@@ -376,5 +387,9 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="793" y="0" width="814" height="867" key="dock-window-2/0.0.1600.860@0.0.1600.860" timestamp="1642491962607" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1642539559992">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1642539559992" />
   </component>
 </project>

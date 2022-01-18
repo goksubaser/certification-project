@@ -3,6 +3,8 @@ pragma solidity ^0.8.10;
 import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
 contract Roles is AccessControlEnumerable {
+
+
     bytes32 public constant RECTOR_ROLE = keccak256("RECTOR_ROLE");
     bytes32 public constant FACULTY_ROLE = keccak256("FACULTY_ROLE");
     bytes32 public constant DEPARTMENT_ROLE = keccak256("DEPARTMENT_ROLE");
@@ -17,6 +19,30 @@ contract Roles is AccessControlEnumerable {
     address[] Instructors;
     address[] Students;
     address[] Graduateds;
+
+    constructor() {
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _setupRole(RECTOR_ROLE, msg.sender);
+    }
+
+    function init(
+        address _courseContractAddress,
+        address _departmentContractAddress,
+        address _diplomaContractAddress,
+        address _facultyContractAddress
+    ) public onlyRole(RECTOR_ROLE){
+        _setupRole(DEFAULT_ADMIN_ROLE, _courseContractAddress);
+        _setupRole(RECTOR_ROLE, _courseContractAddress);
+
+        _setupRole(DEFAULT_ADMIN_ROLE, _departmentContractAddress);
+        _setupRole(RECTOR_ROLE, _departmentContractAddress);
+
+        _setupRole(DEFAULT_ADMIN_ROLE, _diplomaContractAddress);
+        _setupRole(RECTOR_ROLE, _diplomaContractAddress);
+
+        _setupRole(DEFAULT_ADMIN_ROLE, _facultyContractAddress);
+        _setupRole(RECTOR_ROLE, _facultyContractAddress);
+    }
 
     //////////////////////////// CREATE ROLE ///////////////////////////////////////////////////////////////////////////
     //TODO One Address should have only one role. Handle it

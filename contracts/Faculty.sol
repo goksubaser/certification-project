@@ -3,7 +3,10 @@ pragma solidity ^0.8.10;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./Roles.sol";
 
-contract Faculty is ERC721, Roles{
+contract Faculty is ERC721{
+
+    address rolesContractAddress;
+
     uint256 _totalSupply = 0;
     //mapping from tokenID to facultyName
     mapping(uint256 => string) _facultyNameOfID;
@@ -12,16 +15,16 @@ contract Faculty is ERC721, Roles{
     //mapping from tokenID to its departments
     mapping(uint256 => address[]) _departments;
 
-    constructor() ERC721("Faculty", "FAC"){
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(RECTOR_ROLE, msg.sender);
+    constructor(address _rolesContractAddress) ERC721("Faculty", "FAC"){
 //        grantRectorRole(msg.sender);
+        rolesContractAddress =_rolesContractAddress;
     }
 
-    function mint(string memory _facultyName, address facultyAddress) public onlyRole(RECTOR_ROLE){
+    function mint(string memory _facultyName, address facultyAddress) public{
+        require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This account does not have Rector Permmisions");
         require(_IDOfFacultyName[_facultyName] == 0, "This Faculty is already exist");
-        grantFacultyRole(facultyAddress);
-        require(hasRole(FACULTY_ROLE, facultyAddress), "This address is not in FACULTY_ROLE");
+        Roles(rolesContractAddress).grantFacultyRole(facultyAddress);
+        require(Roles(rolesContractAddress).hasFacultyRole(facultyAddress), "This address is not in FACULTY_ROLE");
         require(keccak256(abi.encodePacked(_facultyName)) != keccak256(abi.encodePacked("")), "Faculty name cannot be empty");
         // Faculty - add
         _totalSupply = _totalSupply + 1;
@@ -86,7 +89,4 @@ contract Faculty is ERC721, Roles{
         super.safeTransferFrom(from, to, tokenId, _data);
     }
 
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, AccessControlEnumerable) returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
 }

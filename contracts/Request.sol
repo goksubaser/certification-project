@@ -4,7 +4,7 @@ import "./Department.sol";
 
 contract Request {
 
-    address departmentContractAddress = 0x051171b48cE4D10dE53b1d5A3075518351867542;
+    address departmentContractAddress;
 
     struct DiplomaRequest{
         address studentAddress;
