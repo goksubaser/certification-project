@@ -59,7 +59,7 @@ contract Roles is AccessControlEnumerable {
     function grantStudentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(STUDENT_ROLE, account); Students.push(account);}
     function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
         require(hasRole(STUDENT_ROLE, account), "The address is not a student");
-        revokeRole(STUDENT_ROLE, account);
+        revokeStudentRole(account);
         grantRole(GRADUATED_ROLE, account);
         Graduateds.push(account);
     }

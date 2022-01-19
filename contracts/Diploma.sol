@@ -24,6 +24,7 @@ contract Diploma is ERC721{
         require(Roles(rolesContractAddress).hasStudentRole(_graduatedAddress), "This address is not in STUDENT_ROLE");
         require(!_diplomaExist[_diplomaLink], "This link is already minted");
         require(_hasCertificate[_graduatedAddress] == 0, "This graduate already has a Diploma");
+        //Role function calls
         Roles(rolesContractAddress).grantGraduatedRole(_graduatedAddress);
         //diplomaLinks - add
         _diplomaLinks.push(_diplomaLink);
