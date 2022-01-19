@@ -19,22 +19,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Add faculty permissions are united in one mint call">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="Add Department permissions are united in one mint call">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/Address.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Address.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/Context.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Context.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/ERC165.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/ERC165.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/ERC721.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/ERC721.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/IERC165.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/IERC165.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/IERC721.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/IERC721.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/IERC721Metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/IERC721Metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/IERC721Receiver.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/IERC721Receiver.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/Migrations.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Migrations.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/contracts/Strings.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/Strings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Address.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Context.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ERC165.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ERC721.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/GraduationCertificate.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/IERC165.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/IERC721.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/IERC721Metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/IERC721Receiver.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Migrations.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Ownable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Strings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Department.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Department.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Faculty.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Faculty.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/Request.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Request.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/truffle-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/truffle-config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +115,7 @@
       <workItem from="1641852754809" duration="26141000" />
       <workItem from="1642082730293" duration="11334000" />
       <workItem from="1642166559643" duration="42575000" />
-      <workItem from="1642470804813" duration="40574000" />
+      <workItem from="1642470804813" duration="48056000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -283,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642540466702</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Add Department permissions are united in one mint call">
+      <created>1642549740140</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1642549740140</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +333,8 @@
     <MESSAGE value="ENOENT" />
     <MESSAGE value="Request.sol has the diploma and course request creation functions. Approval and disapproval functions not tested, completed yet" />
     <MESSAGE value="Add faculty permissions are united in one mint call" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add faculty permissions are united in one mint call" />
+    <MESSAGE value="Add Department permissions are united in one mint call" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Department permissions are united in one mint call" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
@@ -367,10 +377,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1641755838547" />
-    <state x="295" y="136" key="Vcs.Push.Dialog.v2" timestamp="1642166707822">
+    <state x="295" y="136" key="Vcs.Push.Dialog.v2" timestamp="1642549834626">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="295" y="136" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1642166707822" />
+    <state x="295" y="136" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1642549834626" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1642492689208">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

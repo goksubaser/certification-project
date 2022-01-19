@@ -76,16 +76,26 @@ contract Department is ERC721{
     function getInstructors(uint256 id) public view returns(address[] memory){
         return _instructors[id];
     }
-    //TODO handle publicity with roles
-    function setInstructors(uint256 id, address[] memory instructors) public{
+    function setInstructors(uint256 id, address[] memory instructors, address revoked) public{
+        require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
         _instructors[id] = instructors;
+        if(revoked == 0x0000000000000000000000000000000000000000){
+            Roles(rolesContractAddress).grantInstructorRole(instructors[instructors.length - 1]);
+        }else{
+            Roles(rolesContractAddress).revokeInstructorRole(revoked);
+        }
     }
     function getStudents(uint256 id) public view returns(address[] memory){
         return _students[id];
     }
-    //TODO handle publicity with roles
-    function setStudents(uint256 id, address[] memory students) public{
+    function setStudents(uint256 id, address[] memory students, address revoked) public{
+        require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
         _students[id] = students;
+        if(revoked == 0x0000000000000000000000000000000000000000){
+            Roles(rolesContractAddress).grantStudentRole(students[students.length - 1]);
+        }else{
+            Roles(rolesContractAddress).revokeStudentRole(revoked);
+        }
     }
     function transferFrom(//Only callable when minted
         address from,

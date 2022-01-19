@@ -46,7 +46,6 @@ contract Faculty is ERC721{
     function getDepartments(uint256 id) public view returns(address[] memory){
         return _departments[id];
     }
-    //TODO handle public visiblity to onlyRole
     function setDepartments(uint256 id, address[] memory departments) public{
         require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
         _departments[id] = departments;
