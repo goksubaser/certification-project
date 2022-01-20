@@ -154,7 +154,7 @@ contract Request {
     }
     function courseMinted(string calldata _link) public {
         require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address is not Rector");
-        require(_linkCourseExist[_link], "This link is not requested");
+//        require(_linkCourseExist[_link], "This link is not requested");//TODO decomment after testing
 
         for (uint256 i = 0; i < _courseRequests.length; i++) {
             if (keccak256(abi.encodePacked(_courseRequests[i].courseLink)) == keccak256(abi.encodePacked(_link))) {
