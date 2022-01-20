@@ -68,23 +68,6 @@ contract Request {
         }
     }
 
-    function approveCourseRequest(CourseRequest memory courseRequest) public {
-        //Requirements
-        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
-        require(courseRequest.atRector == false, "This request is approved already");
-        require(_linkCourseExist[courseRequest.courseLink], "This link is not requested");
-
-        uint256 departmentID = getDepartmentID(courseRequest.requestorDepartment);
-        require(departmentID > 0, "Requestor Department cannot found");
-        require(msg.sender == Department(departmentContractAddress).getFaculty(departmentID), "This Faculty is not the faculty of the requestor");
-        //Approval
-        for (uint256 i = 0; i < _courseRequests.length; i++) {
-            if (keccak256(abi.encodePacked(_courseRequests[i].courseLink)) == keccak256(abi.encodePacked(courseRequest.courseLink))) {
-                _courseRequests[i].atRector = true;
-            }
-        }
-    }
-
     function disapproveDiplomaRequest() public {
         //        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
     }
@@ -126,8 +109,36 @@ contract Request {
         _linkCourseExist[_courseLink] = true;
     }
 
-    function disapproveCourseRequest() public {
-        //        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+    function approveCourseRequest(CourseRequest memory courseRequest) public {
+        //Requirements
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(courseRequest.atRector == false, "This request is approved already");
+        require(_linkCourseExist[courseRequest.courseLink], "This link is not requested");
+        uint256 departmentID = getDepartmentID(courseRequest.requestorDepartment);
+        require(departmentID > 0, "Requestor Department cannot found");
+        require(msg.sender == Department(departmentContractAddress).getFaculty(departmentID), "This Faculty is not the faculty of the requestor");
+        //Approval
+        for (uint256 i = 0; i < _courseRequests.length; i++) {
+            if (keccak256(abi.encodePacked(_courseRequests[i].courseLink)) == keccak256(abi.encodePacked(courseRequest.courseLink))) {
+                _courseRequests[i].atRector = true;
+            }
+        }
+    }
+
+    function disapproveCourseRequest(CourseRequest memory courseRequest) public {
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(courseRequest.atRector == false, "This request is approved already");
+        require(_linkCourseExist[courseRequest.courseLink], "This link is not requested");
+        uint256 departmentID = getDepartmentID(courseRequest.requestorDepartment);
+        require(departmentID > 0, "Requestor Department cannot found");
+        require(msg.sender == Department(departmentContractAddress).getFaculty(departmentID), "This Faculty is not the faculty of the requestor");
+        for (uint256 i = 0; i < _courseRequests.length; i++) {
+            if (keccak256(abi.encodePacked(_courseRequests[i].courseLink)) == keccak256(abi.encodePacked(courseRequest.courseLink))) {
+                _courseRequests[i] = _courseRequests[_courseRequests.length-1];
+                _courseRequests.pop();
+            }
+        }
+        _linkCourseExist[courseRequest.courseLink] = false;
     }
 
     function getCourseRequests() public view returns (CourseRequest[] memory){

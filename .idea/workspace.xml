@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="minor changes">
+    <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="approveCourseRequest is written and tested">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Request.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Request.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,7 @@
       <workItem from="1641852754809" duration="26141000" />
       <workItem from="1642082730293" duration="11334000" />
       <workItem from="1642166559643" duration="42575000" />
-      <workItem from="1642470804813" duration="56498000" />
+      <workItem from="1642470804813" duration="58074000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -292,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642558894875</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="approveCourseRequest is written and tested">
+      <created>1642637123148</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1642637123148</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +340,8 @@
     <MESSAGE value="Add faculty permissions are united in one mint call" />
     <MESSAGE value="Add Department permissions are united in one mint call" />
     <MESSAGE value="minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
+    <MESSAGE value="approveCourseRequest is written and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="approveCourseRequest is written and tested" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641746649036">
@@ -377,10 +384,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1641755838547" />
-    <state x="295" y="136" key="Vcs.Push.Dialog.v2" timestamp="1642558965118">
+    <state x="295" y="136" key="Vcs.Push.Dialog.v2" timestamp="1642637128783">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="295" y="136" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1642558965118" />
+    <state x="295" y="136" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1642637128783" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1642492689208">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
