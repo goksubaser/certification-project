@@ -10,10 +10,10 @@ const Request = artifacts.require("Request");
 module.exports = async function (deployer) {
     await deployer.deploy(Roles);
     await deployer.deploy(Faculty, Roles.address);
-    await deployer.deploy(Diploma, Roles.address);
     await deployer.deploy(Department, Roles.address, Faculty.address);
-    await deployer.deploy(Request, Department.address, Roles.address)
-    await deployer.deploy(Course, Roles.address);
+    await deployer.deploy(Request, Department.address, Roles.address);
+    await deployer.deploy(Diploma, Roles.address, Request.address);
+    await deployer.deploy(Course, Roles.address, Request.address);
 
     const roles = await Roles.deployed()
     await roles.init(Course.address, Department.address, Diploma.address, Faculty.address)

@@ -6,6 +6,7 @@ import "./Roles.sol";
 contract Course is ERC721, Roles{
 
     address rolesContractAddress;
+    address requestContractAddress;
 
     //Mapping of the instructor to the tokenIDs
     mapping(address => uint256[]) _givesCourses;
@@ -23,25 +24,23 @@ contract Course is ERC721, Roles{
     //List of Course Links
     string[] _courseLinks;
 
-    constructor(address _rolesContractAddress) ERC721("Course", "CRS"){
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(RECTOR_ROLE, msg.sender);
-//        grantRectorRole(msg.sender);
+    constructor(address _rolesContractAddress, address _requestContractAddress) ERC721("Course", "CRS"){
         rolesContractAddress =_rolesContractAddress;
+        requestContractAddress = _requestContractAddress;
     }
 
     //TODO Change It To Role Based Ownership From Public
-    function mint(string memory _courseLink, address instructorAddress) public{
+    function mint(string memory _courseLink, address _instructorAddress) public{
         require(!_courseExist[_courseLink], "This link is already minted");
-        require(hasRole(INSTRUCTOR_ROLE, instructorAddress), "This address is not an instructor");
+        require(hasRole(INSTRUCTOR_ROLE, _instructorAddress), "This address is not an instructor");
         //diplomaLinks - add
         _courseLinks.push(_courseLink);
         uint _id = _courseLinks.length; //tokenID's start from 1 because default uint256 value is 0
         //Call mint of ERC721
-        _mint(instructorAddress, _id);
+        _mint(_instructorAddress, _id);
         //Trace it
         _courseExist[_courseLink] = true;
-        _givesCourses[instructorAddress].push(_id);
+        _givesCourses[_instructorAddress].push(_id);
     }
     function getCourseLinks() public view returns(string[] memory courseLinks){
         return _courseLinks;

@@ -23,6 +23,7 @@ contract Roles is AccessControlEnumerable {
     constructor() {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(RECTOR_ROLE, msg.sender);
+        Rector = msg.sender;
     }
 
     function init(
