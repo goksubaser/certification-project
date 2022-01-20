@@ -39,22 +39,35 @@ module.exports = async function (deployer) {
     await department.mint("Industrial Engineering", "0x203485A51cDf5c5Cac271790fD45002060f8b842", "0xCeB49eCc57F96bbA3bB39Be41dd54dE57D01318d")
     // await department.mint("Felsefe", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", "0x5CA7f50D4d36c29F2C4f44fb6682EC668d036E0e")
 
-    console.log("Instructors are being created...")
-    await department.setInstructors(1,["0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92"], "0x0000000000000000000000000000000000000000")
-    await department.setInstructors(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37"], "0x0000000000000000000000000000000000000000")
-    await department.setInstructors(3,["0xfA9F999f088B88808397B7312F9a4792B9dcB13D"], "0x0000000000000000000000000000000000000000")
-    await department.setInstructors(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37", "0xd032570cf5189A7793780c079544DFD2E9F379ae"], "0x0000000000000000000000000000000000000000")
+    // console.log("Instructors are being created...")
+    // await department.setInstructors(1,["0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92"], "0x0000000000000000000000000000000000000000")
+    // await department.setInstructors(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37"], "0x0000000000000000000000000000000000000000")
+    // await department.setInstructors(3,["0xfA9F999f088B88808397B7312F9a4792B9dcB13D"], "0x0000000000000000000000000000000000000000")
+    // await department.setInstructors(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37", "0xd032570cf5189A7793780c079544DFD2E9F379ae"], "0x0000000000000000000000000000000000000000")
 
-    console.log("Course Requests are being created...")
+    // console.log("Course Requests are being created...")
+    // const request = await Request.deployed()
+    // await request.createCourseRequest("0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", {from: "0x3950C702C288aE4f210952Fc75444134fA2D46aA"})//Instructor0 Department1
+    // await request.createCourseRequest("1", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", {from: "0x3950C702C288aE4f210952Fc75444134fA2D46aA"})//Instructor0 Department1
+    // await request.createCourseRequest("2", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor1 Department2
+    // await request.createCourseRequest("3", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor1 Department2
+    // await request.createCourseRequest("4", "0xfA9F999f088B88808397B7312F9a4792B9dcB13D", {from: "0x203485A51cDf5c5Cac271790fD45002060f8b842"})//Instructor2 Department3
+    // await request.createCourseRequest("5", "0xfA9F999f088B88808397B7312F9a4792B9dcB13D", {from: "0x203485A51cDf5c5Cac271790fD45002060f8b842"})//Instructor2 Department3
+    // await request.createCourseRequest("6", "0xd032570cf5189A7793780c079544DFD2E9F379ae", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor3 Department2
+    // await request.createCourseRequest("7", "0xd032570cf5189A7793780c079544DFD2E9F379ae", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor3 Department2
+
+    console.log("Students are being created...")
+    await department.setStudents(1,["0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92"], "0x0000000000000000000000000000000000000000")
+    await department.setStudents(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37"], "0x0000000000000000000000000000000000000000")
+    await department.setStudents(3,["0xfA9F999f088B88808397B7312F9a4792B9dcB13D"], "0x0000000000000000000000000000000000000000")
+    await department.setStudents(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37", "0xd032570cf5189A7793780c079544DFD2E9F379ae"], "0x0000000000000000000000000000000000000000")
+
+    console.log("Diploma Requests are being created...")
     const request = await Request.deployed()
-    await request.createCourseRequest("0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", {from: "0x3950C702C288aE4f210952Fc75444134fA2D46aA"})//Instructor0 Faculty1
-    await request.createCourseRequest("1", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", {from: "0x3950C702C288aE4f210952Fc75444134fA2D46aA"})//Instructor0 Faculty1
-    await request.createCourseRequest("2", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor1 Faculty2
-    await request.createCourseRequest("3", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor1 Faculty2
-    await request.createCourseRequest("4", "0xfA9F999f088B88808397B7312F9a4792B9dcB13D", {from: "0x203485A51cDf5c5Cac271790fD45002060f8b842"})//Instructor2 Faculty3
-    await request.createCourseRequest("5", "0xfA9F999f088B88808397B7312F9a4792B9dcB13D", {from: "0x203485A51cDf5c5Cac271790fD45002060f8b842"})//Instructor2 Faculty3
-    await request.createCourseRequest("6", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor3 Faculty2
-    await request.createCourseRequest("7", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Instructor3 Faculty2
+    await request.createDiplomaRequest("0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", {from: "0x3950C702C288aE4f210952Fc75444134fA2D46aA"})//Student0 Department1
+    await request.createDiplomaRequest("1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Student0 Department2
+    await request.createDiplomaRequest("2", "0xfA9F999f088B88808397B7312F9a4792B9dcB13D", {from: "0x203485A51cDf5c5Cac271790fD45002060f8b842"})//Student0 Department3
+    await request.createDiplomaRequest("3", "0xd032570cf5189A7793780c079544DFD2E9F379ae", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Student0 Department2
 
 
     //Copy Abi's to frontend

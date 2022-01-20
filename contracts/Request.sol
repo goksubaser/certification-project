@@ -8,7 +8,7 @@ contract Request {
     address departmentContractAddress;
     address rolesContractAddress;
 
-    /////////////////////////////////////////////// DIPLOMA ////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////// DIPLOMA ////////////////////////////////////////////////////////////////
     struct DiplomaRequest {
         address studentAddress;
         string diplomaLink;
@@ -48,7 +48,6 @@ contract Request {
         _linkDiplomaExist[_diplomaLink] = true;
         _studentRequestExist[_graduatedAddress] = true;
     }
-
     function approveDiplomaRequest(DiplomaRequest memory diplomaRequest) public {
         //Requirements
         require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
@@ -67,17 +66,29 @@ contract Request {
             }
         }
     }
+    function disapproveDiplomaRequest(DiplomaRequest memory diplomaRequest) public {
+        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        require(diplomaRequest.atRector == false, "This request is approved already");
+        require(_linkDiplomaExist[diplomaRequest.diplomaLink], "This link is not requested");
+        require(_studentRequestExist[diplomaRequest.studentAddress], "This student's diploma is not requested");
 
-    function disapproveDiplomaRequest() public {
-        //        require(Roles(rolesContractAddress).hasFacultyRole(msg.sender), "This address is not a Faculty");
+        uint256 departmentID = getDepartmentID(diplomaRequest.requestorDepartment);
+        require(departmentID > 0, "Requestor Department cannot found");
+        require(msg.sender == Department(departmentContractAddress).getFaculty(departmentID), "This Faculty is not the faculty of the requestor");
+        for (uint256 i = 0; i < _diplomaRequests.length; i++) {
+            if (keccak256(abi.encodePacked(_diplomaRequests[i].diplomaLink)) == keccak256(abi.encodePacked(diplomaRequest.diplomaLink))) {
+                _diplomaRequests[i] = _diplomaRequests[_diplomaRequests.length - 1];
+                _diplomaRequests.pop();
+            }
+        }
+        _linkDiplomaExist[diplomaRequest.diplomaLink] = false;
+        _studentRequestExist[diplomaRequest.studentAddress] = false;
     }
-
     function getDiplomaRequests() public view returns (DiplomaRequest[] memory){
         return _diplomaRequests;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////// COURSE /////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////// COURSE /////////////////////////////////////////////////////////////////
     struct CourseRequest {
         address instructorAddress;
         string courseLink;
@@ -134,7 +145,7 @@ contract Request {
         require(msg.sender == Department(departmentContractAddress).getFaculty(departmentID), "This Faculty is not the faculty of the requestor");
         for (uint256 i = 0; i < _courseRequests.length; i++) {
             if (keccak256(abi.encodePacked(_courseRequests[i].courseLink)) == keccak256(abi.encodePacked(courseRequest.courseLink))) {
-                _courseRequests[i] = _courseRequests[_courseRequests.length-1];
+                _courseRequests[i] = _courseRequests[_courseRequests.length - 1];
                 _courseRequests.pop();
             }
         }
@@ -144,7 +155,7 @@ contract Request {
     function getCourseRequests() public view returns (CourseRequest[] memory){
         return _courseRequests;
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function getDepartmentID(address departmentAddress) private returns (uint256){
         for (uint256 i = 1; i <= Department(departmentContractAddress).getTotalSupply(); i++) {
             if (Department(departmentContractAddress).ownerOf(i) == departmentAddress) {
