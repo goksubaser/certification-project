@@ -62,7 +62,7 @@ contract Course is ERC721{
         //Push it
         _requestOfStudents[_id].push(msg.sender);
     }
-    function approveApplication(uint256 _id, address studentAddress) public{
+    function approveDisapproveApplication(uint256 _id, address studentAddress, bool isApprove) public{
         //Requirements
         require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
         require(Roles(rolesContractAddress).hasStudentRole(studentAddress), "This address is not a student");
@@ -70,11 +70,12 @@ contract Course is ERC721{
         require(!_frozen[_id],"This course is closed by the Instructor");
         require(!isExist(_approvedStudents[_id], studentAddress), "This student already approved for this course");
         require(isExist(_requestOfStudents[_id], studentAddress), "This student has not applied for this course");
-
         //Trace - it
         removeElement(studentAddress, _requestOfStudents[_id]);
-        _takesCourses[studentAddress].push(_id);
-        _approvedStudents[_id].push(studentAddress);
+        if(isApprove){
+            _takesCourses[studentAddress].push(_id);
+            _approvedStudents[_id].push(studentAddress);
+        }
     }
     function getCourseLinks() public view returns(string[] memory courseLinks){
         return _courseLinks;
