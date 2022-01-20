@@ -10,24 +10,24 @@ contract Course is ERC721{
     address requestContractAddress;
 
     //Mapping of the instructor to the tokenIDs
-    mapping(address => uint256[]) _givesCourses;
+    mapping(address => uint256[]) _givesCourses;//array starts from 0th index
     //Mapping of the tokenID to the owner is defined in ERC721.sol
 
     //TODO///////////////////////////////////////////
     //Mapping of the student to the tokenIDs
-    mapping(address => uint256[]) _takesCourses;
+    mapping(address => uint256[]) _takesCourses;//array starts from 0th index
     //Mapping of the tokenID to the request of students
-    mapping(uint256 => address[]) _requestOfStudents;
+    mapping(uint256 => address[]) _requestOfStudents;//array starts from 0th index
     //Mapping of the tokenID to the approved students
-    mapping(uint256 => address[]) _approvedStudents;
+    mapping(uint256 => address[]) _approvedStudents;//array starts from 0th index
     //Mapping of the tokenID to frozen or not
-    mapping(uint256 => bool) _frozen;
+    mapping(uint256 => bool) _frozen;//TODO when you froze a course reset the correlated _requestOfStudents data
     //TODO///////////////////////////////////////////
 
     //is Course link exist
     mapping(string => bool) _courseExist;
     //List of Course Links
-    string[] _courseLinks;
+    string[] _courseLinks;//starts from 0th index
 
     constructor(address _rolesContractAddress, address _requestContractAddress) ERC721("Course", "CRS"){
         rolesContractAddress =_rolesContractAddress;
@@ -62,6 +62,20 @@ contract Course is ERC721{
         //Push it
         _requestOfStudents[_id].push(msg.sender);
     }
+    function approveApplication(uint256 _id, address studentAddress) public{
+        //Requirements
+        require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
+        require(Roles(rolesContractAddress).hasStudentRole(studentAddress), "This address is not a student");
+        require(_id<=_courseLinks.length && _id>0, "This course does not exist");
+        require(!_frozen[_id],"This course is closed by the Instructor");
+        require(!isExist(_approvedStudents[_id], studentAddress), "This student already approved for this course");
+        require(isExist(_requestOfStudents[_id], studentAddress), "This student has not applied for this course");
+
+        //Trace - it
+        removeElement(studentAddress, _requestOfStudents[_id]);
+        _takesCourses[studentAddress].push(_id);
+        _approvedStudents[_id].push(studentAddress);
+    }
     function getCourseLinks() public view returns(string[] memory courseLinks){
         return _courseLinks;
     }
@@ -88,6 +102,15 @@ contract Course is ERC721{
             }
         }
         return false;
+    }
+    function removeElement(address element, address[] storage arr) private returns(address[] memory){
+        for(uint i = 0; i<arr.length; i++){
+            if(arr[i] == element){
+                arr[i] = arr[arr.length-1];
+                arr.pop();
+            }
+        }
+        return arr;
     }
     //TODO Contract Owner can make mistakes when minting. Token should be somewhat editable for contract owner
     function transferFrom(//Only callable when minted
