@@ -90,14 +90,13 @@ contract Roles is AccessControlEnumerable {
     function revokeStudentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(STUDENT_ROLE, account); removeElement(account,Students);}
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function removeElement(address element, address[] storage arr) private returns(address[] memory){
+    function removeElement(address element, address[] storage arr) private{
         for(uint i = 0; i<arr.length; i++){
             if(arr[i] == element){
                 arr[i] = arr[arr.length-1];
                 arr.pop();
             }
         }
-        return arr;
     }
 
     //Create Read Delete

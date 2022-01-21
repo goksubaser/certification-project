@@ -14,10 +14,10 @@ contract Course is ERC721{
     //Mapping of the tokenID to the owner is defined in ERC721.sol
 
     //TODO///////////////////////////////////////////
-    //Mapping of the student to the tokenIDs
-    mapping(address => uint256[]) _takesCourses;//array starts from 0th index
     //Mapping of the tokenID to the request of students
     mapping(uint256 => address[]) _requestOfStudents;//array starts from 0th index
+    //Mapping of the student to the tokenIDs
+    mapping(address => uint256[]) _takesCourses;//array starts from 0th index
     //Mapping of the tokenID to the approved students
     mapping(uint256 => address[]) _approvedStudents;//array starts from 0th index
     //Mapping of the tokenID to frozen or not
@@ -65,6 +65,7 @@ contract Course is ERC721{
     function approveDisapproveApplication(uint256 _id, address studentAddress, bool isApprove) public{
         //Requirements
         require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
+        require(ownerOf(_id) == msg.sender, "This course does not belong to this Instructor");
         require(Roles(rolesContractAddress).hasStudentRole(studentAddress), "This address is not a student");
         require(_id<=_courseLinks.length && _id>0, "This course does not exist");
         require(!_frozen[_id],"This course is closed by the Instructor");
@@ -77,9 +78,24 @@ contract Course is ERC721{
             _approvedStudents[_id].push(studentAddress);
         }
     }
+    function dropStudent(uint256 _id, address studentAddress) public{
+        //Requirements
+        require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
+        require(ownerOf(_id) == msg.sender, "This course does not belong to this Instructor");
+        require(Roles(rolesContractAddress).hasStudentRole(studentAddress), "This address is not a student");
+        require(_id<=_courseLinks.length && _id>0, "This course does not exist");
+        require(!_frozen[_id],"This course is closed by the Instructor");
+        require(isExist(_approvedStudents[_id], studentAddress), "This student is not approved for this course");
+        require(isExistUint(_takesCourses[studentAddress], _id), "This student is not taking this course");
+
+        //Drop Student
+        removeElement(studentAddress, _approvedStudents[_id]);
+        removeElementUint(_id, _takesCourses[studentAddress]);
+    }
     function freeze(uint256 _id) public {
         //Requirements
         require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
+        require(ownerOf(_id) == msg.sender, "This course does not belong to this Instructor");
         require(_id<=_courseLinks.length && _id>0, "This course does not exist");
         require(!_frozen[_id],"This course is closed by the Instructor");
 
@@ -115,15 +131,32 @@ contract Course is ERC721{
         }
         return false;
     }
-    function removeElement(address element, address[] storage arr) private returns(address[] memory){
+    function isExistUint(uint[] storage list, uint element) private view returns(bool){
+        for(uint256 i = 0; i<list.length; i++){
+            if(list[i] == element){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function removeElement(address element, address[] storage arr) private{
         for(uint i = 0; i<arr.length; i++){
             if(arr[i] == element){
                 arr[i] = arr[arr.length-1];
                 arr.pop();
             }
         }
-        return arr;
     }
+    function removeElementUint(uint element, uint[] storage arr) private{
+        for(uint i = 0; i<arr.length; i++){
+            if(arr[i] == element){
+                arr[i] = arr[arr.length-1];
+                arr.pop();
+            }
+        }
+    }
+
     //TODO Contract Owner can make mistakes when minting. Token should be somewhat editable for contract owner
     function transferFrom(//Only callable when minted
         address from,
