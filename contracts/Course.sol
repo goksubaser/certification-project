@@ -13,7 +13,6 @@ contract Course is ERC721{
     mapping(address => uint256[]) _givesCourses;//array starts from 0th index
     //Mapping of the tokenID to the owner is defined in ERC721.sol
 
-    //TODO///////////////////////////////////////////
     //Mapping of the tokenID to the request of students
     mapping(uint256 => address[]) _requestOfStudents;//array starts from 0th index
     //Mapping of the student to the tokenIDs
@@ -21,8 +20,7 @@ contract Course is ERC721{
     //Mapping of the tokenID to the approved students
     mapping(uint256 => address[]) _approvedStudents;//array starts from 0th index
     //Mapping of the tokenID to frozen or not
-    mapping(uint256 => bool) _frozen;//TODO when you froze a course reset the correlated _requestOfStudents data
-    //TODO///////////////////////////////////////////
+    mapping(uint256 => bool) _frozen;
 
     //is Course link exist
     mapping(string => bool) _courseExist;
@@ -87,10 +85,19 @@ contract Course is ERC721{
         require(!_frozen[_id],"This course is closed by the Instructor");
         require(isExist(_approvedStudents[_id], studentAddress), "This student is not approved for this course");
         require(isExistUint(_takesCourses[studentAddress], _id), "This student is not taking this course");
-
         //Drop Student
         removeElement(studentAddress, _approvedStudents[_id]);
         removeElementUint(_id, _takesCourses[studentAddress]);
+    }
+    //TODO test below
+    function editCourseLink(uint _id, string calldata newLink) public{
+        //Requirements
+        require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
+        require(ownerOf(_id) == msg.sender, "This course does not belong to this Instructor");
+        require(_id<=_courseLinks.length && _id>0, "This course does not exist");
+        require(!_frozen[_id], "This course is closed by the Instructor");
+        //Edit
+        _courseLinks[_id-1] = newLink;
     }
     function freeze(uint256 _id) public {
         //Requirements
@@ -98,7 +105,6 @@ contract Course is ERC721{
         require(ownerOf(_id) == msg.sender, "This course does not belong to this Instructor");
         require(_id<=_courseLinks.length && _id>0, "This course does not exist");
         require(!_frozen[_id],"This course is closed by the Instructor");
-
         //Freeze it
         address[] memory empty;
         _requestOfStudents[_id] = empty;
