@@ -36,7 +36,7 @@ module.exports = async function (deployer) {
     const department = await Department.deployed();
     await department.mint("Computer Engineering", "0x3950C702C288aE4f210952Fc75444134fA2D46aA", "0xCeB49eCc57F96bbA3bB39Be41dd54dE57D01318d")
     await department.mint("Philosophy", "0x9979e393F2aA3284C243d04C72F8ab738893c69C", "0x5CA7f50D4d36c29F2C4f44fb6682EC668d036E0e")
-    await department.mint("Industrial Engineering", "0x203485A51cDf5c5Cac271790fD45002060f8b842", "0xCeB49eCc57F96bbA3bB39Be41dd54dE57D01318d")
+    // await department.mint("Industrial Engineering", "0x203485A51cDf5c5Cac271790fD45002060f8b842", "0xCeB49eCc57F96bbA3bB39Be41dd54dE57D01318d")
     // await department.mint("Felsefe", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92", "0x5CA7f50D4d36c29F2C4f44fb6682EC668d036E0e")
 
 //////////////////////////////////////////////// COURSE REQUEST TESTING ////////////////////////////////////////////////
@@ -72,40 +72,40 @@ module.exports = async function (deployer) {
 //     await request.createDiplomaRequest("3", "0xd032570cf5189A7793780c079544DFD2E9F379ae", {from: "0x9979e393F2aA3284C243d04C72F8ab738893c69C"})//Student3 Department2
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////// COURSE EDITING TESTING ////////////////////////////////////////////////
-    console.log("Instructors are being created...")
-    await department.setInstructors(1,["0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92"], "0x0000000000000000000000000000000000000000")//Instructor0 Department1
-    await department.setInstructors(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37"], "0x0000000000000000000000000000000000000000")//Instructor1 Department2
-    console.log("Students are being created...")
-    await department.setStudents(1,["0xfA9F999f088B88808397B7312F9a4792B9dcB13D"], "0x0000000000000000000000000000000000000000")//Student0 Department1
-    await department.setStudents(2,["0xd032570cf5189A7793780c079544DFD2E9F379ae"], "0x0000000000000000000000000000000000000000")//Student1 Department2
-    console.log("Courses are being minted...")
-    const course = await Course.deployed()
-    await course.mint("Course1-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
-    await course.mint("Course2-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
-    await course.mint("Course3-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
-    await course.mint("Course4-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
-    await course.mint("Course5-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
-    await course.mint("Course6-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
-    await course.mint("Course7-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
-    await course.mint("Course8-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
-
-    console.log("Students are being applied")
-    await course.applyCourse(1,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(2,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(3,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(4,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(5,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(6,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(7,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(8,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
-    await course.applyCourse(1,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(2,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(3,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(4,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(5,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(6,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(7,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
-    await course.applyCourse(8,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     console.log("Instructors are being created...")
+//     await department.setInstructors(1,["0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92"], "0x0000000000000000000000000000000000000000")//Instructor0 Department1
+//     await department.setInstructors(2,["0x5ED0FD501C775603D388dbA83155DBF80E919f37"], "0x0000000000000000000000000000000000000000")//Instructor1 Department2
+//     console.log("Students are being created...")
+//     await department.setStudents(1,["0xfA9F999f088B88808397B7312F9a4792B9dcB13D"], "0x0000000000000000000000000000000000000000")//Student0 Department1
+//     await department.setStudents(2,["0xd032570cf5189A7793780c079544DFD2E9F379ae"], "0x0000000000000000000000000000000000000000")//Student1 Department2
+//     console.log("Courses are being minted...")
+//     const course = await Course.deployed()
+//     await course.mint("Course1-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
+//     await course.mint("Course2-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
+//     await course.mint("Course3-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
+//     await course.mint("Course4-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
+//     await course.mint("Course5-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
+//     await course.mint("Course6-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
+//     await course.mint("Course7-Instructor0", "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92")
+//     await course.mint("Course8-Instructor1", "0x5ED0FD501C775603D388dbA83155DBF80E919f37")
+//
+//     console.log("Students are being applied")
+//     await course.applyCourse(1,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(2,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(3,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(4,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(5,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(6,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(7,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(8,{from: "0xfA9F999f088B88808397B7312F9a4792B9dcB13D"})
+//     await course.applyCourse(1,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(2,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(3,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(4,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(5,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(6,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(7,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
+//     await course.applyCourse(8,{from: "0xd032570cf5189A7793780c079544DFD2E9F379ae"})
 
     // console.log("Instructor are approving appications...")
     // await course.approveDisapproveApplication(1, "0xfA9F999f088B88808397B7312F9a4792B9dcB13D", {from: "0x9aB9157db62e8C4eE0Bd0924B0A3bB7868070a92"})

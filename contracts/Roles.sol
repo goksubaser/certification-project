@@ -80,8 +80,6 @@ contract Roles is AccessControlEnumerable {
     function getStudentRoles() public view returns(address[] memory){return Students;}
     function getGraduatedRoles() public view returns(address[] memory){return Graduateds;}
 
-    //TODO It is left for the front-end
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////// DELETE ROLE ///////////////////////////////////////////////////////////////////////////
     function revokeFacultyRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(FACULTY_ROLE, account); removeElement(account,Faculties);}

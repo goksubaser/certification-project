@@ -89,7 +89,6 @@ contract Course is ERC721{
         removeElement(studentAddress, _approvedStudents[_id]);
         removeElementUint(_id, _takesCourses[studentAddress]);
     }
-    //TODO test below
     function editCourseLink(uint _id, string calldata newLink) public{
         //Requirements
         require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");

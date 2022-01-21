@@ -46,9 +46,10 @@ contract Faculty is ERC721{
     function getDepartments(uint256 id) public view returns(address[] memory){
         return _departments[id];
     }
-    function setDepartments(uint256 id, address[] memory departments) public{
+    function setDepartments(uint256 _id, address[] memory departments) public{
         require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
-        _departments[id] = departments;
+        require(_id>0 && _id<=_totalSupply, "This Faculty does not exist");
+        _departments[_id] = departments;
     }
 
     function transferFrom(//Only callable when minted

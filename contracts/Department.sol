@@ -76,9 +76,10 @@ contract Department is ERC721{
     function getInstructors(uint256 id) public view returns(address[] memory){
         return _instructors[id];
     }
-    function setInstructors(uint256 id, address[] memory instructors, address revoked) public{
+    function setInstructors(uint256 _id, address[] memory instructors, address revoked) public{
         require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
-        _instructors[id] = instructors;
+        require(_id>0 && _id<=_totalSupply, "This Department does not exist");
+        _instructors[_id] = instructors;
         if(revoked == 0x0000000000000000000000000000000000000000){
             Roles(rolesContractAddress).grantInstructorRole(instructors[instructors.length - 1]);
         }else{
@@ -88,9 +89,10 @@ contract Department is ERC721{
     function getStudents(uint256 id) public view returns(address[] memory){
         return _students[id];
     }
-    function setStudents(uint256 id, address[] memory students, address revoked) public{
+    function setStudents(uint256 _id, address[] memory students, address revoked) public{
         require(Roles(rolesContractAddress).hasRectorRole(msg.sender), "This address does not have Rector Permissions");
-        _students[id] = students;
+        require(_id>0 && _id<=_totalSupply, "This Department does not exist");
+        _students[_id] = students;
         if(revoked == 0x0000000000000000000000000000000000000000){
             Roles(rolesContractAddress).grantStudentRole(students[students.length - 1]);
         }else{
