@@ -77,6 +77,17 @@ contract Course is ERC721{
             _approvedStudents[_id].push(studentAddress);
         }
     }
+    function freeze(uint256 _id) public {
+        //Requirements
+        require(Roles(rolesContractAddress).hasInstructorRole(msg.sender), "This account does not have Instructor Permissions");
+        require(_id<=_courseLinks.length && _id>0, "This course does not exist");
+        require(!_frozen[_id],"This course is closed by the Instructor");
+
+        //Freeze it
+        address[] memory empty;
+        _requestOfStudents[_id] = empty;
+        _frozen[_id] = true;
+    }
     function getCourseLinks() public view returns(string[] memory courseLinks){
         return _courseLinks;
     }
