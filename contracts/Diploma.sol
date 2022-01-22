@@ -42,10 +42,12 @@ contract Diploma is ERC721 {
         Request(requestContractAddress).diplomaMinted(_diplomaLink, _graduatedAddress);
     }
 
-    function getDiplomaLinks() public view returns (string[] memory diplomaLinks){
+    function getDiplomaLinks() public view returns (string[] memory){
         return _diplomaLinks;
     }
-
+    function getDiplomaID(address _graduatedAddress) public view returns (uint256){
+        return _hasCertificate[_graduatedAddress];
+    }
 
     //TODO Contract Owner can make mistakes when minting. Token should be somewhat editable for contract owner
     function transferFrom(//Only callable when minted
