@@ -22,8 +22,6 @@
     <list default="true" id="9bbe62ec-4437-4ea3-9c7a-eda6bdf0e915" name="Default Changelist" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Roles.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/truffle-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/truffle-config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,13 +72,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -102,7 +102,8 @@
       <workItem from="1641852754809" duration="26141000" />
       <workItem from="1642082730293" duration="11334000" />
       <workItem from="1642166559643" duration="42575000" />
-      <workItem from="1642470804813" duration="122276000" />
+      <workItem from="1642470804813" duration="123222000" />
+      <workItem from="1642959801540" duration="2620000" />
     </task>
     <task id="LOCAL-00001" summary="New github repo created">
       <created>1641761544836</created>
@@ -384,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642858414274</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="minor changes">
+      <created>1642899859062</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1642899859062</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,10 +486,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1641755838547" />
-    <state x="295" y="136" key="Vcs.Push.Dialog.v2" timestamp="1642858421403">
+    <state x="295" y="136" key="Vcs.Push.Dialog.v2" timestamp="1642899879898">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="295" y="136" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1642858421403" />
+    <state x="295" y="136" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1642899879898" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1642690094285">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -506,6 +514,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="793" y="0" width="814" height="867" key="dock-window-3/0.0.1600.860@0.0.1600.860" timestamp="1642656140154" />
+    <state x="456" y="195" key="run.anything.popup" timestamp="1642963246033">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1642963246033" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1642539559992">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

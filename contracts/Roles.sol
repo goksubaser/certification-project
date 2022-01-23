@@ -43,21 +43,37 @@ contract Roles is AccessControlEnumerable {
         _setupRole(DEFAULT_ADMIN_ROLE, _facultyContractAddress);
         _setupRole(RECTOR_ROLE, _facultyContractAddress);
     }
-
     //////////////////////////// CREATE ROLE ///////////////////////////////////////////////////////////////////////////
-    //TODO One Address should have only one role. Handle it
     function grantRectorRole(address account) public onlyRole(RECTOR_ROLE) {
+        roleCheck(account, false);
         grantRole(RECTOR_ROLE, account);
         grantRole(DEFAULT_ADMIN_ROLE, account);
         renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
         renounceRole(RECTOR_ROLE, msg.sender);
         Rector = account;
     }
-    function grantFacultyRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(FACULTY_ROLE, account); Faculties.push(account);}
-    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(DEPARTMENT_ROLE, account); Departments.push(account);}
-    function grantInstructorRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(INSTRUCTOR_ROLE, account); Instructors.push(account);}
-    function grantStudentRole(address account) public onlyRole(RECTOR_ROLE) {grantRole(STUDENT_ROLE, account); Students.push(account);}
+    function grantFacultyRole(address account) public onlyRole(RECTOR_ROLE) {
+        roleCheck(account, false);
+        grantRole(FACULTY_ROLE, account);
+        Faculties.push(account);
+    }
+    function grantDepartmentRole(address account) public onlyRole(RECTOR_ROLE) {
+        roleCheck(account, false);
+        grantRole(DEPARTMENT_ROLE, account);
+        Departments.push(account);
+    }
+    function grantInstructorRole(address account) public onlyRole(RECTOR_ROLE) {
+        roleCheck(account, false);
+        grantRole(INSTRUCTOR_ROLE, account);
+        Instructors.push(account);
+    }
+    function grantStudentRole(address account) public onlyRole(RECTOR_ROLE) {
+        roleCheck(account, false);
+        grantRole(STUDENT_ROLE, account);
+        Students.push(account);
+    }
     function grantGraduatedRole(address account) public onlyRole(RECTOR_ROLE) {
+        roleCheck(account, true);
         require(hasRole(STUDENT_ROLE, account), "The address is not a student");
         revokeStudentRole(account);
         grantRole(GRADUATED_ROLE, account);
@@ -78,7 +94,6 @@ contract Roles is AccessControlEnumerable {
     function getInstructorRoles() public view returns(address[] memory){return Instructors;}
     function getStudentRoles() public view returns(address[] memory){return Students;}
     function getGraduatedRoles() public view returns(address[] memory){return Graduateds;}
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////// DELETE ROLE ///////////////////////////////////////////////////////////////////////////
     function revokeFacultyRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(FACULTY_ROLE, account); removeElement(account,Faculties);}
@@ -86,7 +101,6 @@ contract Roles is AccessControlEnumerable {
     function revokeInstructorRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(INSTRUCTOR_ROLE, account); removeElement(account,Instructors);}
     function revokeStudentRole(address account) public onlyRole(RECTOR_ROLE) {revokeRole(STUDENT_ROLE, account); removeElement(account,Students);}
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     function removeElement(address element, address[] storage arr) private{
         for(uint i = 0; i<arr.length; i++){
             if(arr[i] == element){
@@ -94,5 +108,15 @@ contract Roles is AccessControlEnumerable {
                 arr.pop();
             }
         }
+    }
+    function roleCheck(address account, bool shouldStudent) private{
+        require(!hasRole(RECTOR_ROLE, account), "The address is already has RECTOR_ROLE");
+        require(!hasRole(FACULTY_ROLE, account), "The address is already has FACULTY_ROLE");
+        require(!hasRole(DEPARTMENT_ROLE, account), "The address is already has DEPARTMENT_ROLE");
+        require(!hasRole(INSTRUCTOR_ROLE, account), "The address is already has INSTRUCTOR_ROLE");
+        if(!shouldStudent){
+            require(!hasRole(STUDENT_ROLE, account), "The address is already has STUDENT_ROLE");
+        }
+        require(!hasRole(GRADUATED_ROLE, account), "The address is already has GRADUATED_ROLE");
     }
 }
