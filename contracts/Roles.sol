@@ -4,7 +4,6 @@ import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
 contract Roles is AccessControlEnumerable {
 
-
     bytes32 public constant RECTOR_ROLE = keccak256("RECTOR_ROLE");
     bytes32 public constant FACULTY_ROLE = keccak256("FACULTY_ROLE");
     bytes32 public constant DEPARTMENT_ROLE = keccak256("DEPARTMENT_ROLE");
@@ -96,11 +95,4 @@ contract Roles is AccessControlEnumerable {
             }
         }
     }
-
-    //Create Read Delete
-    //1 EF
-    //2 Fen Edb
-    //3 Ibf
-    //4 Mühendislik
-    //5 Uygulamalı Bilimler Yüksekokulu
 }
